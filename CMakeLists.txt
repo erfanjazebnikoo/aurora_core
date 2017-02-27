@@ -73,7 +73,7 @@ QT4_WRAP_CPP(GUI_HEADER_FILES_HPP ${GUI_HEADER_FILES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${catkin_INCLUDE_DIRS})
 
 # build!
-add_executable(aurora_gui ${GUI_SOURCE_FILES} ${GUI_RESOURCE_FILES_CPP} ${GUI_HEADER_FILES_HPP})
-target_link_libraries(aurora_gui ${catkin_LIBRARIES} ${QT_LIBRARIES} ${ROS_LIBRARIES} ${catkin_LIBRARIES})
-#add_dependencies(aurora_gui ${PROJECT_NAME}_gencpp)
+add_executable(aurora_core ${GUI_SOURCE_FILES} ${GUI_RESOURCE_FILES_CPP} ${GUI_HEADER_FILES_HPP})
+target_link_libraries(aurora_core ${catkin_LIBRARIES} ${QT_LIBRARIES} ${ROS_LIBRARIES} ${catkin_LIBRARIES})
+#add_dependencies(aurora_core ${PROJECT_NAME}_gencpp)
 

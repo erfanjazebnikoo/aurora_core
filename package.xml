@@ -7,7 +7,7 @@
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="sajjadmuscle@gmail.com ">Sajjad Rahnama</maintainer>
+  <maintainer email="sajjadmuscle@gmail.com">Sajjad Rahnama</maintainer>
   <maintainer email="erfan.jazebnikoo@gmail.com">Erfan Jazeb Nikoo</maintainer>
 
 
@@ -20,7 +20,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/aurora_gui</url> -->
+  <!-- <url type="website">http://wiki.ros.org/aurora_core</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
