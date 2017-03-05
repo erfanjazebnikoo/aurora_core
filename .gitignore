@@ -27,3 +27,4 @@
 *.exe
 *.out
 *.app
+/Aurora_Core/
