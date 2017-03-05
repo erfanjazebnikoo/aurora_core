@@ -11,25 +11,27 @@
 
 int main(int argc, char* argv[])
 {
-  ros::init(argc, argv, "aurora_gui");
-  //  ros::NodeHandle n;
-  //  ros::ServiceClient get = n.serviceClient<mavros_msgs::WaypointPush>("/mavros/mission/push");
-  //      mavros_msgs::WaypointPush wp_push;
-  //      mavros_msgs::Waypoint wp;
-  //      wp.frame = 3;
-  //      wp.command = 16;
-  //      wp.is_current = 2;
-  //      wp.autocontinue = 0;
-  //      wp.param1=0.0;
-  //      wp.x_lat = -35.3621170;
-  //      wp.y_long = 149.1651428;
-  //      wp.z_alt = 20;
-  //      wp_push.request.waypoints.push_back(wp);
-  //      if (get.call(wp_push)) {
-  //                  ROS_INFO("dddddddddddddddddddddddddddddddddddd");
-  //      }
-  //      else
-  //        ROS_INFO("ffffffffffffffffffffffffffffffffff");
+//  ros::init(argc, argv, "aurora_gui");
+//  ros::NodeHandle n;
+//  ros::ServiceClient get = n.serviceClient<mavros_msgs::WaypointPush>("/mavros/mission/push");
+//  mavros_msgs::WaypointPush wp_push;
+//  mavros_msgs::Waypoint wp;
+//  wp.frame = 3;
+//  wp.command = 16;
+//  wp.is_current = 2;
+//  wp.autocontinue = 0;
+//  wp.param1 = 0.0;
+//  wp.x_lat = -35.3621170;
+//  wp.y_long = 149.1651428;
+//  wp.z_alt = 20;
+//  wp_push.request.waypoints.clear();
+//  wp_push.request.waypoints.push_back(wp);
+//  if (get.call(wp_push))
+//  {
+//    ROS_INFO("dddddddddddddddddddddddddddddddddddd");
+//  }
+//  else
+//    ROS_INFO("ffffffffffffffffffffffffffffffffff");
 
 
   QCoreApplication application(argc, argv);
