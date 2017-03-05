@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="89">
+<configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="../src" name="src">
+    <df root="../src" name="0">
       <in>Behaviours.cpp</in>
       <in>Behaviours.h</in>
       <in>Core.cpp</in>
@@ -77,6 +77,7 @@
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>
+          <variable name="ROS_MASTER_URI" value="http://localhost:11311"/>
         </environment>
       </runprofile>
     </conf>
