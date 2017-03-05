@@ -11,7 +11,7 @@
 
 int main(int argc, char* argv[])
 {
-//  ros::init(argc, argv, "aurora_gui");
+  ros::init(argc, argv, "aurora_gui");
 //  ros::NodeHandle n;
 //  ros::ServiceClient get = n.serviceClient<mavros_msgs::WaypointPush>("/mavros/mission/push");
 //  mavros_msgs::WaypointPush wp_push;
