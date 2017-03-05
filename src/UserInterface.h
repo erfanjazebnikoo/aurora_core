@@ -37,6 +37,7 @@ namespace au {
             virtual void do_land_mode();
             virtual void do_rtl_mode();
             virtual void do_arm();
+            virtual void do_disarm();
             virtual void do_fill_wayPoint(const QString &commands);
             virtual void do_start_mission();
 

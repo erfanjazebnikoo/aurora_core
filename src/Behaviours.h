@@ -27,6 +27,7 @@ namespace au {
         void landMode();
         void rtlMode();
         void arm();
+        void disarm();
         void gotoWp(double lat, double lon, int alt);
 
     public:

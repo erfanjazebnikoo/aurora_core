@@ -29,6 +29,7 @@ namespace au {
         virtual void do_take_off(const QString &value) = 0;
         virtual void do_guided_mode() = 0;
         virtual void do_arm() = 0;
+        virtual void do_disarm() = 0;
         virtual void do_fill_wayPoint(const QString &commands) = 0;
         virtual void do_start_mission() = 0;
         virtual void do_land_mode() = 0;

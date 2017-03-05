@@ -16,6 +16,7 @@ const QString TOKEN_GUIDED_MODE = "GuidedMode";
 const QString TOKEN_LAND_MODE = "LandMode";
 const QString TOKEN_RTL_MODE = "RTLMode";
 const QString TOKEN_ARM = "Arm";
+const QString TOKEN_DISARM = "Disarm";
 const QString TOKEN_START_MISSION = "StartMission";
 const QChar COMMAND_SEPARATOR = ';';
 
@@ -66,6 +67,10 @@ void UICmdParser::parse(const QString &commands)
         else if (parts[0] == TOKEN_ARM)
         {
           do_arm();
+        }
+        else if (parts[0] == TOKEN_DISARM)
+        {
+          do_disarm();
         }
         else if (parts[0] == TOKEN_START_MISSION)
         {

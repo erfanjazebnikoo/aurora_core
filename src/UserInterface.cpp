@@ -86,6 +86,12 @@ void UserInterface::Parser::do_arm()
   doWrite = false;
 }
 
+void UserInterface::Parser::do_disarm()
+{
+  au::WorldModel::getInstance()->behaviours.disarm();
+  doWrite = false;
+}
+
 void UserInterface::Parser::do_fill_wayPoint(const QString &commands)
 {
   fromXMLtoWP(commands, au::WorldModel::getInstance()->behaviours.wp);

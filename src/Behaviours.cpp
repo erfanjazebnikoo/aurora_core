@@ -94,6 +94,19 @@ void Behaviours::arm()
   }
 }
 
+void Behaviours::disarm()
+{
+  srv_arm.request.value = false;
+  if (arming_cl.call(srv_arm))
+  {
+    ROS_ERROR("ARM send ok ");
+  }
+  else
+  {
+    ROS_ERROR("Failed arming or disarming");
+  }
+}
+
 void Behaviours::gotoWp(double lat, double lon, int alt)
 {
   waypoint.frame = 3;
