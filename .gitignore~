@@ -27,7 +27,3 @@
 *.exe
 *.out
 *.app
-
-aurora_core/Aurora_Core
-aurora_core/Aurora_Core/nbproject
-aurora_core/Aurora_Core/nbproject/private
