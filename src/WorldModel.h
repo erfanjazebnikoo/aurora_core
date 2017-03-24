@@ -1,41 +1,60 @@
-/*
- * WorldModel.h
- *
- *  Created on: Dec 12, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     WorldModel.h
+ * @Author:   Sajjad Rahnama
+ *            Erfan Jazeb Nikoo
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
  */
 
 #ifndef WORLDMODEL_H_
 #define WORLDMODEL_H_
 
 #include "Library.h"
-#include "shared_memory.h"
-#include "subscribe_mavros_state.h"
+#include "SharedMemory.h"
+#include "SubscribeMavrosState.h"
 #include "MavrosGlobalPosition.h"
 #include "Behaviours.h"
 #include "Geometry.h"
+
+using namespace std;
 
 namespace au {
 
     class WorldModel {
         UNIQUE_INSTANCE(WorldModel)
 
+    private:
+        SharedMemory* shareMemory;
+        SubscribeMavrosState mavrosState;
+        ros::NodeHandle n;
+        ros::Subscriber mavrosStateSub;
+        ros::Subscriber mavrosGlobalPositionSub;
+        MavrosGlobalPosition mavrosGlobalPosition;
+        au::Behaviours *behaviours;
+        bool startMission;
+        void updateMyInformation();
+
     public:
         void init();
         void update();
+        bool isMissionStarted();
+        void setStartMission(bool missionState);
 
-    public:
-        Shared_Memory* share_memory;
-        Subscribe_mavros_state mavros_state;
-        Mavros_Global_Position mavros_global_position;
-        ros::NodeHandle n;
-        ros::Subscriber mavros_state_sub;
-        ros::Subscriber mavros_global_position_sub;
-        au::Behaviours behaviours;
-        bool start_mission;
-        au::Behaviours::WP::const_iterator itr;
-        au::Distance distance;
-        int b;
+        struct Me {
+            double lat;
+            double lon;
+            double alt;
+            bool isArmed;
+            bool isConnected;
+            string mode;
+            string modeChange;
+
+            Me() : lat(0), lon(0), alt(0), isArmed(false), isConnected(false), mode(""), modeChange("") {
+            }
+        } me;
     };
 
 } // namespace au

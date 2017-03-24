@@ -1,13 +1,16 @@
-/*
- * UserInterface.cpp
- *
- *  Created on: Dec 22, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     UserInterface.cpp
+ * @Author:   Sajjad Rahnama
+ *            Erfan Jazeb Nikoo
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 22, 2016
  */
 
 #include "UserInterface.h"
 #include "UICmdResponse.h"
-#include "WorldModel.h"
 #include <iostream>
 //#include <mavros_msgs/CommandTOL.h>
 using namespace au;
@@ -17,6 +20,8 @@ UNIQUE_INSTANCE_VARIABLE(UserInterface)
 UserInterface::UserInterface()
 {
   uiSocket = new QUdpSocket(this);
+  world = au::WorldModel::getInstance();
+  behaviours = au::Behaviours::getInstance();
 }
 
 UserInterface::~UserInterface()
@@ -34,6 +39,8 @@ void UserInterface::readPendingDatagrams()
 {
   ROS_INFO("I Heard command");
   Parser parser;
+  parser.pWorld = au::WorldModel::getInstance();
+  parser.pBehaviours = au::Behaviours::getInstance();
   QByteArray datagram;
   QHostAddress address;
   quint16 port;
@@ -53,9 +60,9 @@ void UserInterface::Parser::do_mavros_state()
 {
   ROS_INFO("I Heard do_mavros_state");
 
-  int connected = au::WorldModel::getInstance()->share_memory->getConnected();
-  int armed = au::WorldModel::getInstance()->share_memory->getArmed();
-  std::string mode = au::WorldModel::getInstance()->share_memory->getMode();
+  int connected = pWorld->me.isConnected;
+  int armed = pWorld->me.isArmed;
+  std::string mode = pWorld->me.mode;
 
   UICmdResponse response(about::VERSION, lastCommand, UICmdResponse::E_OK);
   response.items.append(UICmdResponse::Item(1, "mavros_connected", QString::number(connected)));
@@ -70,31 +77,31 @@ void UserInterface::Parser::do_mavros_state()
 
 void UserInterface::Parser::do_take_off(const QString &value)
 {
-  au::WorldModel::getInstance()->behaviours.takeOff(value);
+  pBehaviours->takeOff(value);
   doWrite = false;
 }
 
 void UserInterface::Parser::do_guided_mode()
 {
-  au::WorldModel::getInstance()->behaviours.guidedMode();
+  pBehaviours->guidedMode();
   doWrite = false;
 }
 
 void UserInterface::Parser::do_arm()
 {
-  au::WorldModel::getInstance()->behaviours.arm();
+  pBehaviours->arm();
   doWrite = false;
 }
 
 void UserInterface::Parser::do_disarm()
 {
-  au::WorldModel::getInstance()->behaviours.disarm();
+  pBehaviours->disarm();
   doWrite = false;
 }
 
 void UserInterface::Parser::do_fill_wayPoint(const QString &commands)
 {
-  fromXMLtoWP(commands, au::WorldModel::getInstance()->behaviours.wp);
+  fromXMLtoWP(commands, pBehaviours->getWayPoints());
   doWrite = false;
 }
 
@@ -136,21 +143,21 @@ bool UserInterface::Parser::fromXMLtoWP(const QString &commands, QList<au::WayPo
 
 void UserInterface::Parser::do_start_mission()
 {
-  au::WorldModel::getInstance()->init();
-  au::WorldModel::getInstance()->behaviours.gotoWp(au::WorldModel::getInstance()->itr->lat,
-    au::WorldModel::getInstance()->itr->lon,
-    au::WorldModel::getInstance()->itr->alt);
-  au::WorldModel::getInstance()->start_mission = true;
+  pWorld->init();
+  //  au::WorldModel::getInstance()->behaviours.gotoWp(au::WorldModel::getInstance()->itr->lat,
+  //    au::WorldModel::getInstance()->itr->lon,
+  //    au::WorldModel::getInstance()->itr->alt);
+  pWorld->setStartMission(true);
 }
 
 void UserInterface::Parser::do_land_mode()
 {
-  au::WorldModel::getInstance()->behaviours.landMode();
+  pBehaviours->landMode();
   doWrite = false;
 }
 
 void UserInterface::Parser::do_rtl_mode()
 {
-  au::WorldModel::getInstance()->behaviours.rtlMode();
+  pBehaviours->rtlMode();
   doWrite = false;
 }

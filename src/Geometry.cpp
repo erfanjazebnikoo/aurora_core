@@ -1,8 +1,11 @@
-/*
- * Geometry.cpp
- *
- *  Created on: Jan 2, 2017
- *      Author: sajjadtest
+/* 
+ * @File:     Geometry.cpp
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Jan 2, 2017
  */
 
 #include "Geometry.h"

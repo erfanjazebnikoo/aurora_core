@@ -1,8 +1,12 @@
-/*
- * UserInterface.h
- *
- *  Created on: Dec 22, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     UserInterface.h
+ * @Author:   Sajjad Rahnama
+ *            Erfan Jazeb Nikoo
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 22, 2016
  */
 
 #ifndef USERINTERFACE_H_
@@ -15,6 +19,8 @@
 #include "UICmdParser.h"
 #include <QList>
 #include "WayPoint.h"
+#include "Behaviours.h"
+#include "WorldModel.h"
 #include <QString>
 #include <QtXml/qdom.h>
 
@@ -42,6 +48,9 @@ namespace au {
             virtual void do_start_mission();
 
             bool fromXMLtoWP(const QString &commands, QList<au::WayPoint> &wp);
+        public:
+            au::Behaviours *pBehaviours;
+            au::WorldModel *pWorld;
         };
 
     public:
@@ -49,6 +58,8 @@ namespace au {
 
     private:
         QUdpSocket *uiSocket;
+        au::Behaviours *behaviours;
+        au::WorldModel *world;
 
     private slots:
         void readPendingDatagrams();

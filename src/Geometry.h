@@ -1,8 +1,11 @@
-/*
- * Geometry.h
- *
- *  Created on: Jan 2, 2017
- *      Author: sajjadtest
+/* 
+ * @File:     Geometry.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Jan 2, 2017
  */
 
 #ifndef GEOMETRY_H_

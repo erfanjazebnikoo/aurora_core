@@ -1,6 +1,16 @@
-#include "mavros_setstreamrate.h"
+/* 
+ * @File:     MavRosSetStreamRate.cpp
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
+ */
 
-MAVROS_setStreamRate::MAVROS_setStreamRate()
+#include "MavRosSetStreamRate.h"
+
+MavRosSetStreamRate::MavRosSetStreamRate()
 {
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<mavros_msgs::StreamRate>("/mavros/set_stream_rate");

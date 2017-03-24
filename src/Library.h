@@ -1,8 +1,11 @@
-/*
- * Library.h
- *
- *  Created on: Dec 12, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     Library.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
  */
 
 #ifndef LIBRARY_H_

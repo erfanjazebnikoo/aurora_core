@@ -1,3 +1,13 @@
+/* 
+ * @File:     MavRosSetStreamRate.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
+ */
+
 #ifndef MAVROS_SETSTREAMRATE_H
 #define MAVROS_SETSTREAMRATE_H
 
@@ -6,9 +16,9 @@
 #include "mavros_msgs/ParamGet.h"
 #include "mavros_msgs/WaypointPush.h"
 
-class MAVROS_setStreamRate {
+class MavRosSetStreamRate {
 public:
-    MAVROS_setStreamRate();
+    MavRosSetStreamRate();
 public:
     int SYSID_MYGCS_Value;
     int ARMING_CHECK_Value;

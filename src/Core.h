@@ -1,8 +1,11 @@
-/*
- * Core.h
- *
- *  Created on: Dec 12, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     Core.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
  */
 
 #ifndef CORE_H_

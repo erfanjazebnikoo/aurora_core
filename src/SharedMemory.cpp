@@ -1,6 +1,16 @@
-#include "shared_memory.h"
+/* 
+ * @File:     SharedMemory.cpp
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
+ */
 
-Shared_Memory::Shared_Memory() :
+#include "SharedMemory.h"
+
+SharedMemory::SharedMemory() :
   armed(false), connected(false)
 {
   if (pthread_mutex_init(&mutex, NULL) != 0)
@@ -9,7 +19,7 @@ Shared_Memory::Shared_Memory() :
   }
 }
 
-std::string Shared_Memory::getModeChange()
+std::string SharedMemory::getModeChange()
 {
   std::string result;
   pthread_mutex_lock(&mutex);
@@ -18,21 +28,21 @@ std::string Shared_Memory::getModeChange()
   return result;
 }
 
-void Shared_Memory::setModeChange(std::string s)
+void SharedMemory::setModeChange(std::string s)
 {
   pthread_mutex_lock(&mutex);
   this->modeChange = s;
   pthread_mutex_unlock(&mutex);
 }
 
-void Shared_Memory::setMode(std::string s)
+void SharedMemory::setMode(std::string s)
 {
   pthread_mutex_lock(&mutex);
   this->mode = s;
   pthread_mutex_unlock(&mutex);
 }
 
-std::string Shared_Memory::getMode()
+std::string SharedMemory::getMode()
 {
   std::string result;
   pthread_mutex_lock(&mutex);
@@ -41,14 +51,14 @@ std::string Shared_Memory::getMode()
   return result;
 }
 
-void Shared_Memory::setConnected(bool b)
+void SharedMemory::setConnected(bool b)
 {
   pthread_mutex_lock(&mutex);
   this->connected = b;
   pthread_mutex_unlock(&mutex);
 }
 
-bool Shared_Memory::getConnected()
+bool SharedMemory::getConnected()
 {
   bool result;
   pthread_mutex_lock(&mutex);
@@ -57,14 +67,14 @@ bool Shared_Memory::getConnected()
   return result;
 }
 
-void Shared_Memory::setArmed(bool b)
+void SharedMemory::setArmed(bool b)
 {
   pthread_mutex_lock(&mutex);
   this->armed = b;
   pthread_mutex_unlock(&mutex);
 }
 
-bool Shared_Memory::getArmed()
+bool SharedMemory::getArmed()
 {
   bool result;
   pthread_mutex_lock(&mutex);

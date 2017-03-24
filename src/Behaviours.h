@@ -1,8 +1,12 @@
-/*
- * Behaviours.h
- *
- *  Created on: Dec 29, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     Behaviours.h
+ * @Author:   Sajjad Rahnama
+ *            Erfan Jazeb Nikoo
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 29, 2016
  */
 
 #ifndef BEHAVIOURS_H_
@@ -19,9 +23,9 @@
 namespace au {
 
     class Behaviours {
+        UNIQUE_INSTANCE(Behaviours)
+
     public:
-        Behaviours();
-        ~Behaviours();
         void takeOff(const QString &value);
         void guidedMode();
         void landMode();
@@ -29,8 +33,10 @@ namespace au {
         void arm();
         void disarm();
         void gotoWp(double lat, double lon, int alt);
+        QList<au::WayPoint> &getWayPoints();
+        au::WayPoint getWayPoint(int numOfWayPoint);
 
-    public:
+    private:
         ros::NodeHandle n;
 
         ros::ServiceClient takeoff_cl;

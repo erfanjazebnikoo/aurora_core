@@ -1,3 +1,13 @@
+/* 
+ * @File:     SharedMemory.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
+ */
+
 #ifndef SHARED_MEMORY_H
 #define SHARED_MEMORY_H
 
@@ -5,9 +15,9 @@
 #include <pthread.h>
 #include <iostream>
 
-class Shared_Memory {
+class SharedMemory {
 public:
-    Shared_Memory();
+    SharedMemory();
 
     bool getArmed();
     void setArmed(bool b);
@@ -17,7 +27,7 @@ public:
     bool getConnected();
     std::string getModeChange();
     void setModeChange(std::string s);
-public:
+private:
     pthread_mutex_t mutex;
 
     std::string mode;

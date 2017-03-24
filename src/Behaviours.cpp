@@ -1,14 +1,19 @@
-/*
- * Behaviours.cpp
- *
- *  Created on: Dec 29, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     Behaviours.cpp
+ * @Author:   Sajjad Rahnama
+ *            Erfan Jazeb Nikoo
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 29, 2016
  */
 
 #include "Behaviours.h"
 
 using namespace au;
 
+UNIQUE_INSTANCE_VARIABLE(Behaviours)
 Behaviours::Behaviours()
 {
   takeoff_cl = n.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
@@ -19,7 +24,7 @@ Behaviours::Behaviours()
 
 Behaviours::~Behaviours()
 {
-  // TODO Auto-generated destructor stub
+
 }
 
 void Behaviours::takeOff(const QString &value)
@@ -127,5 +132,14 @@ void Behaviours::gotoWp(double lat, double lon, int alt)
   }
   else
     ROS_INFO("  cant go to waypoint  ");
+}
 
+QList<au::WayPoint> &Behaviours::getWayPoints()
+{
+  return wp;
+}
+
+au::WayPoint Behaviours::getWayPoint(int numOfWayPoint)
+{
+  return wp.at(numOfWayPoint);
 }

@@ -1,9 +1,13 @@
-/*
- * Core.h
- *
- *  Created on: Dec 12, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     main.cpp
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 12, 2016
  */
+
 #include <QCoreApplication>
 #include "CoreStarter.h"
 

@@ -1,8 +1,11 @@
-/*
- * UICmdParser.h
- *
- *  Created on: Dec 22, 2016
- *      Author: sajjadmuscle
+/* 
+ * @File:     UICmdParser.h
+ * @Author:   Sajjad Rahnama
+ * 
+ * @Project:  Aurora
+ * @Version:  1.0 - Iran Open 2017
+ * 
+ * @Created on Dec 22, 2016
  */
 
 #ifndef UICMDPARSER_H_
