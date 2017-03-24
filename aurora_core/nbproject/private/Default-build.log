@@ -1,0 +1,69 @@
+[  2%] Generating src/moc_MavrosGlobalPosition.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/MavrosGlobalPosition.h:0: Note: No relevant classes found. No output generated.
+[  4%] Generating src/moc_shared_memory.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/shared_memory.h:0: Note: No relevant classes found. No output generated.
+[  6%] Generating src/moc_subscribe_mavros_state.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.h:0: Note: No relevant classes found. No output generated.
+[  9%] Generating src/moc_mavros_setstreamrate.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/mavros_setstreamrate.h:0: Note: No relevant classes found. No output generated.
+[ 11%] Generating src/moc_Library.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Library.h:0: Note: No relevant classes found. No output generated.
+[ 13%] Generating src/moc_Core.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Core.h:0: Note: No relevant classes found. No output generated.
+[ 16%] Generating src/moc_CoreStarter.cxx
+[ 18%] Generating src/moc_UserInterface.cxx
+[ 20%] Generating src/moc_WorldModel.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/WorldModel.h:0: Note: No relevant classes found. No output generated.
+[ 23%] Generating src/moc_UICmdParser.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UICmdParser.h:0: Note: No relevant classes found. No output generated.
+[ 25%] Generating src/moc_UICmdResponse.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UICmdResponse.h:0: Note: No relevant classes found. No output generated.
+[ 27%] Generating src/moc_Behaviours.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Behaviours.h:0: Note: No relevant classes found. No output generated.
+[ 30%] Generating src/moc_WayPoint.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/WayPoint.h:0: Note: No relevant classes found. No output generated.
+[ 32%] Generating src/moc_Geometry.cxx
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Geometry.h:0: Note: No relevant classes found. No output generated.
+Scanning dependencies of target aurora_core
+[ 34%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/main.cpp.o
+[ 37%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/shared_memory.cpp.o
+[ 39%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/subscribe_mavros_state.cpp.o
+In file included from /home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.cpp:1:0:
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.h: In constructor ‘Subscribe_mavros_state::Subscribe_mavros_state(Shared_Memory*)’:
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.h:20:10: warning: ‘Subscribe_mavros_state::connected’ will be initialized after [-Wreorder]
+     bool connected;
+          ^
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.h:19:10: warning:   ‘bool Subscribe_mavros_state::guided’ [-Wreorder]
+     bool guided;
+          ^
+/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/subscribe_mavros_state.cpp:3:1: warning:   when initialized here [-Wreorder]
+ Subscribe_mavros_state::Subscribe_mavros_state(Shared_Memory* shared_memory) :
+ ^
+[ 41%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/mavros_setstreamrate.cpp.o
+[ 44%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/Library.cpp.o
+[ 46%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/Core.cpp.o
+[ 48%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/CoreStarter.cpp.o
+[ 51%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/UserInterface.cpp.o
+[ 53%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/WorldModel.cpp.o
+[ 55%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/UICmdParser.cpp.o
+[ 58%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/UICmdResponse.cpp.o
+[ 60%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/Behaviours.cpp.o
+[ 62%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/WayPoint.cpp.o
+[ 65%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/Geometry.cpp.o
+[ 67%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/MavrosGlobalPosition.cpp.o
+[ 69%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_shared_memory.cxx.o
+[ 72%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_subscribe_mavros_state.cxx.o
+[ 74%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_mavros_setstreamrate.cxx.o
+[ 76%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_Library.cxx.o
+[ 79%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_Core.cxx.o
+[ 81%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_CoreStarter.cxx.o
+[ 83%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_UserInterface.cxx.o
+[ 86%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_WorldModel.cxx.o
+[ 88%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_UICmdParser.cxx.o
+[ 90%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_UICmdResponse.cxx.o
+[ 93%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_Behaviours.cxx.o
+[ 95%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_WayPoint.cxx.o
+[ 97%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_Geometry.cxx.o
+[100%] Building CXX object aurora_core/CMakeFiles/aurora_core.dir/src/moc_MavrosGlobalPosition.cxx.o
+Linking CXX executable /home/ramon/Desktop/Guilano/Aurora/aurora_core/devel/lib/aurora_core/aurora_core
+[100%] Built target aurora_core

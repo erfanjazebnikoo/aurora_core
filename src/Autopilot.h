@@ -21,9 +21,11 @@ public:
     Autopilot(const Autopilot& orig);
     virtual ~Autopilot();
     void execute();
+    bool readyForUpdate();
 private:
     au::WorldModel *world;
     au::Behaviours *behaviours;
+    bool needUpdate;
 };
 
 #endif	/* AUTOPILOT_H */

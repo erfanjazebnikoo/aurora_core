@@ -28,6 +28,6 @@
 *.out
 *.app
 *.*~
-Aurora_Core/
-Aurora_Core/nbproject
-Aurora_Core/nbproject/private
+aurora_core/
+aurora_core/nbproject
+aurora_core/nbproject/private

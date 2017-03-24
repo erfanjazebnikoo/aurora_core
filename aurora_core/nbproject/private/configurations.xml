@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="../src" name="0">
+      <in>Autopilot.cpp</in>
+      <in>Autopilot.h</in>
+      <in>Behaviours.cpp</in>
+      <in>Behaviours.h</in>
+      <in>Core.cpp</in>
+      <in>Core.h</in>
+      <in>CoreStarter.cpp</in>
+      <in>CoreStarter.h</in>
+      <in>Geometry.cpp</in>
+      <in>Geometry.h</in>
+      <in>Library.cpp</in>
+      <in>Library.h</in>
+      <in>MavRosSetStreamRate.cpp</in>
+      <in>MavRosSetStreamRate.h</in>
+      <in>MavrosGlobalPosition.cpp</in>
+      <in>MavrosGlobalPosition.h</in>
+      <in>SharedMemory.cpp</in>
+      <in>SharedMemory.h</in>
+      <in>SubscribeMavrosState.cpp</in>
+      <in>SubscribeMavrosState.h</in>
+      <in>UICmdParser.cpp</in>
+      <in>UICmdParser.h</in>
+      <in>UICmdResponse.cpp</in>
+      <in>UICmdResponse.h</in>
+      <in>UserInterface.cpp</in>
+      <in>UserInterface.h</in>
+      <in>WayPoint.cpp</in>
+      <in>WayPoint.h</in>
+      <in>WorldModel.cpp</in>
+      <in>WorldModel.h</in>
+      <in>main.cpp</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>../../../build/Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>../../../build</rundir>
+        <buildfirst>false</buildfirst>
+        <console-type>1</console-type>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+          <variable name="ROS_MASTER_URI" value="http://localhost:11311"/>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

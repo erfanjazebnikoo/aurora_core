@@ -26,9 +26,9 @@ catkin_package(
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 set(GUI_SOURCE_FILES         
 	src/main.cpp    
-	src/shared_memory.cpp  
-	src/subscribe_mavros_state.cpp
-        src/mavros_setstreamrate.cpp 
+	src/SharedMemory.cpp  
+	src/SubscribeMavrosState.cpp
+        src/MavRosSetStreamRate.cpp 
 	src/Library.cpp
 	src/Core.cpp
 	src/CoreStarter.cpp
@@ -40,12 +40,13 @@ set(GUI_SOURCE_FILES
 	src/WayPoint.cpp
 	src/Geometry.cpp
 	src/MavrosGlobalPosition.cpp
+	src/Autopilot.cpp
 )
 
 set(GUI_HEADER_FILES         
-	src/shared_memory.h  
-	src/subscribe_mavros_state.h
-	src/mavros_setstreamrate.h
+	src/SharedMemory.h  
+	src/SubscribeMavrosState.h
+	src/MavRosSetStreamRate.h
 	src/Library.h
 	src/Core.h
 	src/CoreStarter.h
@@ -57,6 +58,7 @@ set(GUI_HEADER_FILES
 	src/WayPoint.h
 	src/Geometry.h
 	src/MavrosGlobalPosition.h
+	src/Autopilot.h
 )
 
 
