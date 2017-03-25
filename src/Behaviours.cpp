@@ -149,10 +149,22 @@ void Behaviours::readTakeoffGps()
 {
   if (read_takeoff_gps_cl.call(srv_read_takeoff_gps))
   {
-    ROS_ERROR("ttttttttttt %f",srv_read_takeoff_gps.response.lat);
+    takeoff_gps_lat = srv_read_takeoff_gps.response.lat;
+    takeoff_gps_lon = srv_read_takeoff_gps.response.lon;
+    ROS_ERROR("Read takeoff gps %f", srv_read_takeoff_gps.response.lat);
   }
   else
   {
-    ROS_ERROR("ffffffffffffffff");
+    ROS_ERROR("Cant read takeoff gps");
   }
+}
+
+double Behaviours::getTakeoffGpsLat()
+{
+  return this->takeoff_gps_lat;
+}
+
+double Behaviours::getTakeoffGpsLon()
+{
+  return this->takeoff_gps_lon;
 }

@@ -35,10 +35,15 @@ namespace au {
         void disarm();
         void gotoWp(double lat, double lon, int alt);
         void readTakeoffGps();
+        double getTakeoffGpsLat();
+        double getTakeoffGpsLon();
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 
     private:
+        double takeoff_gps_lat;
+        double takeoff_gps_lon;
+        
         ros::NodeHandle n;
 
         ros::ServiceClient takeoff_cl;
