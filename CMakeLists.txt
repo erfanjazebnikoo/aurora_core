@@ -11,16 +11,13 @@ find_package(catkin REQUIRED COMPONENTS
   mavros
   mavros_msgs
   sensor_msgs
+  std_msgs
+  message_generation
 )
 
 
 #include_directories(${catkin_INCLUDE_DIRS})
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES vision_opencv
-#  CATKIN_DEPENDS cv_bridge image roscpp sensor_msgs std_msgs
-#  DEPENDS system_lib
-)
+catkin_package(CATKIN_DEPENDS message_runtime) 
 # ---------------------------- GUI --------------------------------------------------
 # set header ans source files
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")

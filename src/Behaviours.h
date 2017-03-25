@@ -16,6 +16,7 @@
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/WaypointPush.h>
+#include <rviz_satellite/ReadTakeoffGps.h>
 #include <ros/ros.h>
 #include "WayPoint.h"
 #include <QList>
@@ -33,6 +34,7 @@ namespace au {
         void arm();
         void disarm();
         void gotoWp(double lat, double lon, int alt);
+        void readTakeoffGps();
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 
@@ -53,6 +55,10 @@ namespace au {
         mavros_msgs::Waypoint waypoint;
         typedef QList<au::WayPoint> WP;
         QList<au::WayPoint> wp;
+        
+        ros::ServiceClient read_takeoff_gps_cl;
+        rviz_satellite::ReadTakeoffGps srv_read_takeoff_gps;
+        
 
     };
 

@@ -161,3 +161,9 @@ void UserInterface::Parser::do_rtl_mode()
   pBehaviours->rtlMode();
   doWrite = false;
 }
+
+void UserInterface::Parser::do_read_takeoff_gps()
+{
+  pBehaviours->readTakeoffGps();
+  doWrite = false;
+}

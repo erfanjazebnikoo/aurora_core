@@ -20,6 +20,7 @@ Behaviours::Behaviours()
   cl_mode = n.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
   arming_cl = n.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");
   waypoint_cl = n.serviceClient<mavros_msgs::WaypointPush>("/mavros/mission/push");
+  read_takeoff_gps_cl = n.serviceClient<rviz_satellite::ReadTakeoffGps>("/read_takeoff_gps");
 }
 
 Behaviours::~Behaviours()
@@ -142,4 +143,16 @@ QList<au::WayPoint> &Behaviours::getWayPoints()
 au::WayPoint Behaviours::getWayPoint(int numOfWayPoint)
 {
   return wp.at(numOfWayPoint);
+}
+
+void Behaviours::readTakeoffGps()
+{
+  if (read_takeoff_gps_cl.call(srv_read_takeoff_gps))
+  {
+    ROS_ERROR("ttttttttttt %f",srv_read_takeoff_gps.response.lat);
+  }
+  else
+  {
+    ROS_ERROR("ffffffffffffffff");
+  }
 }
