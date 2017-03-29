@@ -30,7 +30,8 @@ void Core::init()
   cout << endl << "+******************************************************************************+" << endl;
   cout << au::about::LOGO.toStdString() << endl;
   cout << "  " << au::about::TITLE.toStdString() << " - Version: " << au::about::VERSION.toStdString() << endl <<
-    "  " << au::about::TEAM.toStdString() << endl << "  " << au::about::DESCRIPTION.toStdString() << endl << endl;
+    "  " << au::about::TEAM.toStdString() << endl << "  " << au::about::DESCRIPTION.toStdString() << endl << endl << "  " <<
+    au::about::MEMBER.toStdString() << endl << endl;
   cout << "+******************************************************************************+" << endl << endl;
 
 

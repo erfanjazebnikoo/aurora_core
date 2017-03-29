@@ -12,6 +12,10 @@
 #define UICMDPARSER_H_
 
 #include <QString>
+#include <ros/ros.h>
+#include <QStringList>
+#include <QChar>
+#include <iostream>
 
 namespace au {
 

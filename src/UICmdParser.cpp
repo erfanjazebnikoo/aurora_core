@@ -9,9 +9,6 @@
  */
 
 #include "UICmdParser.h"
-#include <QStringList>
-#include <QChar>
-#include <iostream>
 
 const QString TOKEN_MAVROS_STATE = "MavrosState";
 const QString TOKEN_TAKE_OFF = "TakeOff";
@@ -40,7 +37,8 @@ void UICmdParser::parse(const QString &commands)
 {
   if (commands.length() > 100)
   {
-    std::cout << commands.toStdString();
+//    std::cout << commands.toStdString();
+    ROS_INFO("UICommandParser => Way Points Received Successful...!");
     do_fill_wayPoint(commands);
   }
   else

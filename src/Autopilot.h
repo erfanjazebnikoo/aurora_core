@@ -12,21 +12,47 @@
 #define	AUTOPILOT_H
 
 #include "WorldModel.h"
+#include "Counter.h"
 
-using namespace au;
+namespace au {
 
-class Autopilot {
-public:
-    Autopilot();
-    Autopilot(const Autopilot& orig);
-    virtual ~Autopilot();
-    void execute();
-    bool readyForUpdate();
-private:
-    au::WorldModel *world;
-    au::Behaviours *behaviours;
-    bool needUpdate;
-};
+    class Autopilot {
+    public:
+        Autopilot();
+        virtual ~Autopilot();
+        void execute();
 
+        enum STATE {
+            STATE_NUMB = -1,
+            STATE_GUIDED_MODE = 0,
+            STATE_ARM = 1,
+            STATE_TAKE_OFF = 2,
+            STATE_WAYPOINT_START = 3,
+            STATE_WAYPOINT_CURRENT = 4,
+            STATE_WAYPOINT_NEXT = 5,
+            STATE_FIND_VICTIM = 6,
+            STATE_DROP_LIFEBUOY = 7,
+            STATE_WAYPOINT_RESUME = 8,
+            STATE_WAYPOINT_FINISH = 9,
+            STATE_RETURN_TO_HOME = 10
+        };
+    private:
+        WorldModel *world;
+        Behaviours *behaviours;
+        bool needUpdate;
+        bool isWayPointStarted;
+        int currentState;
+        WayPoint *currentWayPoint;
+        QList<WayPoint> reachedWayPoints;
+        bool isNextWayPointSet;
+        Counter wayPointCounter;
+        Counter updateCounter;
+        void stateHandler();
+        void wayPointsHandler();
+        void currentStateDecisionMaker();
+        bool readyForUpdate();
+
+    };
+}
 #endif	/* AUTOPILOT_H */
 

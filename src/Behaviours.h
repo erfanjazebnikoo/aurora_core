@@ -19,6 +19,7 @@
 #include <ros/ros.h>
 #include "WayPoint.h"
 #include <QList>
+#include "GpsCoordination.h"
 
 namespace au {
 
@@ -26,13 +27,13 @@ namespace au {
         UNIQUE_INSTANCE(Behaviours)
 
     public:
-        void takeOff(const QString &value);
-        void guidedMode();
-        void landMode();
-        void rtlMode();
-        void arm();
-        void disarm();
-        void gotoWp(double lat, double lon, int alt);
+        bool takeOff(const QString &value);
+        bool guidedMode();
+        bool landMode();
+        bool rtlMode();
+        bool arm();
+        bool disarm();
+        bool gotoWp(GpsCoordination target);
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 

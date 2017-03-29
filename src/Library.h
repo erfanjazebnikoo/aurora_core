@@ -53,6 +53,7 @@ namespace au {
         extern const QString TITLE;
         extern const QString VERSION;
         extern const QString TEAM;
+        extern const QString MEMBER;
         extern const QString LICENCE;
         extern const QString DESCRIPTION;
         extern const QString PLATFORM;

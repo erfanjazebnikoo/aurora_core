@@ -15,16 +15,17 @@
 #include <mavros_msgs/GlobalPositionTarget.h>
 #include <iostream>
 #include <sensor_msgs/NavSatFix.h>
+#include "GpsCoordination.h"
 
-class MavrosGlobalPosition {
-public:
-    MavrosGlobalPosition();
-    void mavrosGlobalCb(const sensor_msgs::NavSatFixConstPtr &msg);
+namespace au {
 
-public:
-    double lat;
-    double lon;
-    double alt;
-};
+    class MavrosGlobalPosition {
+    public:
+        MavrosGlobalPosition();
+        void mavrosGlobalCb(const sensor_msgs::NavSatFixConstPtr &msg);
 
+    public:
+        GpsCoordination position;
+    };
+}
 #endif /* MAVROSGLOBALPOSITION_H_ */

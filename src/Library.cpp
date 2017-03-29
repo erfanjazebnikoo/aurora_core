@@ -16,6 +16,7 @@ using namespace au;
 const QString about::TITLE = "Aurora";
 const QString about::VERSION = "1.0";
 const QString about::TEAM = "Guilano - Professor Hesabi Robotics Research Laboratory";
+const QString about::MEMBER = "Erfan Jazeb Nikoo, Sajjad Rahnama, Amir Ab Khoshk, Babak Moradi\n  Navid Hadipour Limouei, Nima FarzanehPour Koli";
 const QString about::LICENCE = "No Licence";
 const QString about::DESCRIPTION = "Autonomous Unmanned Aerial Robot, RoboCup Iran Open 2017, Tehran";
 const QString about::PLATFORM = "Ubuntu, C++11, Qt4, ROS";

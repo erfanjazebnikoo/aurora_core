@@ -27,7 +27,7 @@ Behaviours::~Behaviours()
 
 }
 
-void Behaviours::takeOff(const QString &value)
+bool Behaviours::takeOff(const QString &value)
 {
   srv_takeoff.request.altitude = value.toInt();
   srv_takeoff.request.latitude = 0;
@@ -36,102 +36,118 @@ void Behaviours::takeOff(const QString &value)
   srv_takeoff.request.yaw = 0;
   if (takeoff_cl.call(srv_takeoff))
   {
-    ROS_ERROR("srv_takeoff send ok");
+    ROS_INFO("Behaviours => Take Off Send Successful...!");
+    return srv_takeoff.response.success;
   }
   else
   {
-    ROS_ERROR("Failed Takeoff");
+    ROS_ERROR("Behaviours => Take Off Send Failed...!");
+    return srv_takeoff.response.success;
   }
 }
 
-void Behaviours::guidedMode()
+bool Behaviours::guidedMode()
 {
   srv_setMode.request.base_mode = 0;
   srv_setMode.request.custom_mode = "GUIDED";
   if (cl_mode.call(srv_setMode))
   {
-    ROS_ERROR("setmode send ok");
+    ROS_INFO("Behaviours => Set Guided Mode Successful...!");
+    return srv_setMode.response.success;
   }
   else
   {
-    ROS_ERROR("Failed SetMode");
+    ROS_ERROR("Behaviours => Set Guided Mode Failed...!");
+    return srv_setMode.response.success;
   }
 }
 
-void Behaviours::landMode()
+bool Behaviours::landMode()
 {
   srv_setMode.request.base_mode = 0;
   srv_setMode.request.custom_mode = "LAND";
   if (cl_mode.call(srv_setMode))
   {
-    ROS_ERROR("setmode send ok");
+    ROS_INFO("Behaviours => Set Land Mode Successful...!");
+    return srv_setMode.response.success;
   }
   else
   {
-    ROS_ERROR("Failed SetMode");
+    ROS_ERROR("Behaviours => Set Land Mode Failed...!");
+    return srv_setMode.response.success;
   }
 }
 
-void Behaviours::rtlMode()
+bool Behaviours::rtlMode()
 {
   srv_setMode.request.base_mode = 0;
   srv_setMode.request.custom_mode = "RTL";
   if (cl_mode.call(srv_setMode))
   {
-    ROS_ERROR("setmode send ok");
+    ROS_INFO("Behaviours => Set RTL Mode Successful...!");
+    return srv_setMode.response.success;
   }
   else
   {
-    ROS_ERROR("Failed SetMode");
+    ROS_ERROR("Behaviours => Set RTL Mode Failed...!");
+    return srv_setMode.response.success;
   }
 }
 
-void Behaviours::arm()
+bool Behaviours::arm()
 {
   srv_arm.request.value = true;
   if (arming_cl.call(srv_arm))
   {
-    ROS_ERROR("ARM send ok ");
+    ROS_INFO("Behaviours => Arm Send Successful...!");
+    return srv_arm.response.success;
   }
   else
   {
-    ROS_ERROR("Failed arming or disarming");
+    ROS_ERROR("Behaviours => Arm Send Failed...!");
+    return srv_arm.response.success;
   }
 }
 
-void Behaviours::disarm()
+bool Behaviours::disarm()
 {
   srv_arm.request.value = false;
   if (arming_cl.call(srv_arm))
   {
-    ROS_ERROR("ARM send ok ");
+    ROS_INFO("Behaviours => Disarm Send Successful...!");
+    return srv_arm.response.success;
   }
   else
   {
-    ROS_ERROR("Failed arming or disarming");
+    ROS_ERROR("Behaviours => Disarm Send Failed...!");
+    return srv_arm.response.success;
   }
 }
 
-void Behaviours::gotoWp(double lat, double lon, int alt)
+bool Behaviours::gotoWp(GpsCoordination target)
 {
   waypoint.frame = 3;
   waypoint.command = 16;
   waypoint.is_current = 2;
   waypoint.autocontinue = 0;
-  waypoint.x_lat = lat;
   waypoint.param1 = 0;
   waypoint.param2 = 0;
   waypoint.param3 = 0;
   waypoint.param4 = 0;
-  waypoint.y_long = lon;
-  waypoint.z_alt = alt;
+  waypoint.x_lat = target.getLatitude();
+  waypoint.y_long = target.getLongitude();
+  waypoint.z_alt = target.getAltitude();
   waypoint_push.request.waypoints.push_back(waypoint);
   if (waypoint_cl.call(waypoint_push))
   {
-    ROS_INFO("  go to waypoint  ");
+    ROS_INFO("Behaviours => Go to Way Point Successful...!");
+    return waypoint_push.response.success;
   }
   else
-    ROS_INFO("  cant go to waypoint  ");
+  {
+    ROS_ERROR("Behaviours => Go to Way Point Failed...!");
+    return waypoint_push.response.success;
+  }
 }
 
 QList<au::WayPoint> &Behaviours::getWayPoints()
