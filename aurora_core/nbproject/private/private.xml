@@ -11,16 +11,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Behaviours.cpp</file>
+            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/GpsCoordination.cpp</file>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UserInterface.cpp</file>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Autopilot.cpp</file>
-            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UserInterface.h</file>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/WorldModel.cpp</file>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Behaviours.h</file>
             <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/Autopilot.h</file>
-            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/main.cpp</file>
-            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/WorldModel.h</file>
-            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UICmdResponse.h</file>
-            <file>file:/home/ramon/Desktop/Guilano/Aurora/aurora_core/src/aurora_core/src/UICmdResponse.cpp</file>
         </group>
     </open-files>
 </project-private>

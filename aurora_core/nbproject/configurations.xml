@@ -6,7 +6,9 @@
       <in>Behaviours.cpp</in>
       <in>Core.cpp</in>
       <in>CoreStarter.cpp</in>
+      <in>Counter.cpp</in>
       <in>Geometry.cpp</in>
+      <in>GpsCoordination.cpp</in>
       <in>Library.cpp</in>
       <in>MavRosSetStreamRate.cpp</in>
       <in>MavrosGlobalPosition.cpp</in>
@@ -27,10 +29,15 @@
       <itemPath>../../../build/aurora_core/src/moc_Behaviours.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_Core.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_CoreStarter.cxx</itemPath>
+      <itemPath>../../../build/aurora_core/src/moc_Counter.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_Geometry.cxx</itemPath>
+      <itemPath>../../../build/aurora_core/src/moc_GpsCoordination.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_Library.cxx</itemPath>
+      <itemPath>../../../build/aurora_core/src/moc_MavRosSetStreamRate.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_MavrosGlobalPosition.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_SafetyState.cxx</itemPath>
+      <itemPath>../../../build/aurora_core/src/moc_SharedMemory.cxx</itemPath>
+      <itemPath>../../../build/aurora_core/src/moc_SubscribeMavrosState.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_UICmdParser.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_UICmdResponse.cxx</itemPath>
       <itemPath>../../../build/aurora_core/src/moc_UserInterface.cxx</itemPath>
@@ -112,12 +119,27 @@
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../build/aurora_core/src/moc_Counter.cxx"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
       <item path="../../../build/aurora_core/src/moc_Geometry.cxx"
             ex="false"
             tool="1"
             flavor2="8">
       </item>
+      <item path="../../../build/aurora_core/src/moc_GpsCoordination.cxx"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
       <item path="../../../build/aurora_core/src/moc_Library.cxx"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../build/aurora_core/src/moc_MavRosSetStreamRate.cxx"
             ex="false"
             tool="1"
             flavor2="8">
@@ -128,6 +150,16 @@
             flavor2="8">
       </item>
       <item path="../../../build/aurora_core/src/moc_SafetyState.cxx"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../build/aurora_core/src/moc_SharedMemory.cxx"
+            ex="false"
+            tool="1"
+            flavor2="8">
+      </item>
+      <item path="../../../build/aurora_core/src/moc_SubscribeMavrosState.cxx"
             ex="false"
             tool="1"
             flavor2="8">
@@ -180,7 +212,11 @@
       </item>
       <item path="../src/CoreStarter.cpp" ex="false" tool="1" flavor2="8">
       </item>
+      <item path="../src/Counter.cpp" ex="false" tool="1" flavor2="8">
+      </item>
       <item path="../src/Geometry.cpp" ex="false" tool="1" flavor2="8">
+      </item>
+      <item path="../src/GpsCoordination.cpp" ex="false" tool="1" flavor2="8">
       </item>
       <item path="../src/Library.cpp" ex="false" tool="1" flavor2="8">
       </item>
