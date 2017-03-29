@@ -45,12 +45,6 @@ void Autopilot::execute()
 {
   if (readyForUpdate())
   {
-    ROS_ERROR("Autopilot => Size of Way points: %d", behaviours->getWayPoints().size());
-    ROS_WARN("Autopilot => Distance: %f", world->me.selfPosition.distance(currentWayPoint->position));
-    ROS_INFO("Autopilot => Lat: %f , Lon: %f , alt: %f", currentWayPoint->position.getLatitude(), currentWayPoint->position.getLongitude(),
-      currentWayPoint->position.getAltitude());
-    ROS_ERROR("Autopilot => Way point counter: %d", wayPointCounter.getCount());
-
     wayPointsHandler();
     currentStateDecisionMaker();
 
@@ -90,7 +84,7 @@ void Autopilot::currentStateDecisionMaker()
     isNextWayPointSet = false;
     needUpdate = true;
   }
-  else if (wayPointCounter.getCount() == behaviours->getWayPoints().size() &&
+  else if (wayPointCounter.getCount() == behaviours->getWayPoints().size() - 1 &&
            world->me.selfPosition.distance(currentWayPoint->position) < 2.0)
   {
     currentState = STATE_RETURN_TO_HOME;
@@ -120,7 +114,7 @@ void Autopilot::stateHandler()
       break;
     case STATE_WAYPOINT_START:
       ROS_WARN("Autopilot => Way Point Started...!");
-      behaviours->gotoWp(currentWayPoint->position);
+      behaviours->goToWayPoint(currentWayPoint->position);
       isWayPointStarted = true;
       needUpdate = false;
       break;
@@ -129,7 +123,7 @@ void Autopilot::stateHandler()
       break;
     case STATE_WAYPOINT_NEXT:
       ROS_WARN("Autopilot => Next Way Point Started...!");
-      behaviours->gotoWp(currentWayPoint->position);
+      behaviours->goToWayPoint(currentWayPoint->position);
       needUpdate = false;
       break;
     case STATE_FIND_VICTIM:
@@ -156,7 +150,8 @@ void Autopilot::stateHandler()
 
 void Autopilot::wayPointsHandler()
 {
-  if (world->me.selfPosition.distance(currentWayPoint->position) < 2.0)
+  if (world->me.selfPosition.distance(currentWayPoint->position) < 2.0 &&
+      wayPointCounter.getCount() < behaviours->getWayPoints().size() - 1)
   {
     //    reachedWayPoints.append(currentWayPoint);
     wayPointCounter.increase();

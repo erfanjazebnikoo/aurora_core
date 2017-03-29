@@ -33,7 +33,7 @@ namespace au {
         bool rtlMode();
         bool arm();
         bool disarm();
-        bool gotoWp(GpsCoordination target);
+        bool goToWayPoint(GpsCoordination target);
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 

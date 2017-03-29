@@ -124,7 +124,7 @@ bool Behaviours::disarm()
   }
 }
 
-bool Behaviours::gotoWp(GpsCoordination target)
+bool Behaviours::goToWayPoint(GpsCoordination target)
 {
   waypoint.frame = 3;
   waypoint.command = 16;
@@ -137,6 +137,7 @@ bool Behaviours::gotoWp(GpsCoordination target)
   waypoint.x_lat = target.getLatitude();
   waypoint.y_long = target.getLongitude();
   waypoint.z_alt = target.getAltitude();
+  waypoint_push.request.waypoints.clear();
   waypoint_push.request.waypoints.push_back(waypoint);
   if (waypoint_cl.call(waypoint_push))
   {
