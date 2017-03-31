@@ -1,5 +1,5 @@
 # aurora_core
-================
+======
 
 Core program of autonomous multi rotor robots based on APM autopilot.We use ROS platform and Mavlink protocol for connection between program and robot.
 
@@ -24,3 +24,4 @@ Pixhawk is used as flight control in Aurora project.
 Please ask your questions on:
 
 - erfan.jazebnikoo@gmail.com
+- sajjadmuscle@gmail.com
