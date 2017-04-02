@@ -16,10 +16,12 @@ using namespace au;
 UNIQUE_INSTANCE_VARIABLE(Behaviours)
 Behaviours::Behaviours()
 {
+  mavrosHeartSub = n.subscribe("/heart", 1, &Behaviours::mavrosHeartCb, this);
   takeoff_cl = n.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
   cl_mode = n.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
   arming_cl = n.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");
   waypoint_cl = n.serviceClient<mavros_msgs::WaypointPush>("/mavros/mission/push");
+  read_takeoff_gps_cl = n.serviceClient<rviz_satellite::ReadTakeoffGps>("/read_takeoff_gps");
 }
 
 Behaviours::~Behaviours()
@@ -159,4 +161,35 @@ QList<au::WayPoint> &Behaviours::getWayPoints()
 au::WayPoint Behaviours::getWayPoint(int numOfWayPoint)
 {
   return wp.at(numOfWayPoint);
+}
+
+void Behaviours::readTakeoffGps()
+{
+  if (read_takeoff_gps_cl.call(srv_read_takeoff_gps))
+  {
+    takeoff_gps_lat = srv_read_takeoff_gps.response.lat;
+    takeoff_gps_lon = srv_read_takeoff_gps.response.lon;
+    ROS_ERROR("Read takeoff gps %f", srv_read_takeoff_gps.response.lat);
+  }
+  else
+  {
+    ROS_ERROR("Cant read takeoff gps");
+  }
+}
+
+double Behaviours::getTakeoffGpsLat()
+{
+  return this->takeoff_gps_lat;
+}
+
+double Behaviours::getTakeoffGpsLon()
+{
+  return this->takeoff_gps_lon;
+}
+
+void Behaviours::mavrosHeartCb(const aurora_vision::heart &msg)
+{
+  std::cout << "X=" << msg.X << std::endl;
+  std::cout << "Y=" << msg.Y << std::endl;
+  std::cout << "Distance=" << msg.Distance << std::endl;
 }

@@ -18,6 +18,7 @@ const QString TOKEN_RTL_MODE = "RTLMode";
 const QString TOKEN_ARM = "Arm";
 const QString TOKEN_DISARM = "Disarm";
 const QString TOKEN_START_MISSION = "StartMission";
+const QString TOKEN_READ_TAKEOFF_GPS = "ReadTakeoffGps";
 const QChar COMMAND_SEPARATOR = ';';
 
 namespace au
@@ -84,6 +85,10 @@ void UICmdParser::parse(const QString &commands)
         else if (parts[0] == TOKEN_RTL_MODE)
         {
           do_rtl_mode();
+        }
+        else if (parts[0] == TOKEN_READ_TAKEOFF_GPS)
+        {
+          do_read_takeoff_gps();
         }
       }
     }
