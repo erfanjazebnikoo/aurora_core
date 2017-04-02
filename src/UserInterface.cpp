@@ -162,3 +162,15 @@ void UserInterface::Parser::do_rtl_mode()
   pBehaviours->rtlMode();
   doWrite = false;
 }
+
+void UserInterface::Parser::do_read_takeoff_gps()
+{
+  pBehaviours->readTakeoffGps();
+  UICmdResponse response(about::VERSION, lastCommand, UICmdResponse::E_OK);
+  response.items.append(UICmdResponse::Item(1, "takeoff_lat", QString("%1").arg(pBehaviours->getTakeoffGpsLat(),0,'g',13)));
+  response.items.append(UICmdResponse::Item(1, "takeoff_lon", QString("%1").arg(pBehaviours->getTakeoffGpsLon(),0,'g',13)));
+
+  resultString = response.toXML();
+  std::cout<<resultString.toStdString()<<std::endl;
+  doWrite = true;
+}

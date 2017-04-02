@@ -85,6 +85,8 @@
               <pElem>../../../build/aurora_core</pElem>
               <pElem>/opt/ros/indigo/include</pElem>
               <pElem>/usr/include/eigen3</pElem>
+              <pElem>../../../../catkin_aurora_rviz_satellite/devel/include</pElem>
+              <pElem>../../../devel/include</pElem>
             </incDir>
             <preprocessorList>
               <Elem>QT_CORE_LIB</Elem>

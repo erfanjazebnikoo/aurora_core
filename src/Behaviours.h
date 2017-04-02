@@ -16,6 +16,8 @@
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/WaypointPush.h>
+#include <rviz_satellite/ReadTakeoffGps.h>
+#include <aurora_vision/heart.h>
 #include <ros/ros.h>
 #include "WayPoint.h"
 #include <QList>
@@ -27,17 +29,24 @@ namespace au {
         UNIQUE_INSTANCE(Behaviours)
 
     public:
-        bool takeOff(const QString &value);
-        bool guidedMode();
-        bool landMode();
-        bool rtlMode();
-        bool arm();
-        bool disarm();
-        bool goToWayPoint(GpsCoordination target);
+        void takeOff(const QString &value);
+        void guidedMode();
+        void landMode();
+        void rtlMode();
+        void arm();
+        void disarm();
+        void gotoWp(double lat, double lon, int alt);
+        void readTakeoffGps();
+        double getTakeoffGpsLat();
+        double getTakeoffGpsLon();
+        void mavrosHeartCb(const aurora_vision::heart &msg);
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 
     private:
+        double takeoff_gps_lat;
+        double takeoff_gps_lon;
+
         ros::NodeHandle n;
 
         ros::ServiceClient takeoff_cl;
@@ -55,6 +64,10 @@ namespace au {
         typedef QList<au::WayPoint> WP;
         QList<au::WayPoint> wp;
 
+        ros::ServiceClient read_takeoff_gps_cl;
+        rviz_satellite::ReadTakeoffGps srv_read_takeoff_gps;
+
+        ros::Subscriber mavrosHeartSub;
     };
 
 } /* namespace au */
