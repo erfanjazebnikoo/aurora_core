@@ -153,9 +153,8 @@ void UserInterface::Parser::do_start_mission()
 
 void UserInterface::Parser::do_land_mode()
 {
-//    pBehaviours->loiterMode();
-//    doWrite = false;
-  pWorld->isHeartSeen = true;
+    pBehaviours->landMode();
+    doWrite = false;
 }
 
 void UserInterface::Parser::do_rtl_mode()

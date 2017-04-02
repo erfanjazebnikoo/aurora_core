@@ -19,6 +19,7 @@
 #include "Behaviours.h"
 #include "Geometry.h"
 #include "GpsCoordination.h"
+#include <aurora_vision/heart.h>
 
 using namespace std;
 
@@ -33,10 +34,12 @@ namespace au {
         ros::NodeHandle n;
         ros::Subscriber mavrosStateSub;
         ros::Subscriber mavrosGlobalPositionSub;
+        ros::Subscriber mavrosHeartSub;
         MavrosGlobalPosition mavrosGlobalPosition;
         au::Behaviours *behaviours;
         bool startMission;
         void updateMyInformation();
+        void mavrosHeartCb(const aurora_vision::heart &msg);
 
     public:
         void init();
@@ -64,8 +67,6 @@ namespace au {
             Heart() : isSeen(false), x(0.0), y(0.0), distance(0.0) {
             }
         } heart;
-
-        bool isHeartSeen;
     };
 
 } // namespace au

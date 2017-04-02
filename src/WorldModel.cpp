@@ -28,9 +28,9 @@ WorldModel::WorldModel() :
   mavrosStateSub = n.subscribe("/mavros/state", 1, &SubscribeMavrosState::mavrosStateCb, &mavrosState);
   mavrosGlobalPositionSub = n.subscribe("/mavros/global_position/global", 1, &MavrosGlobalPosition::mavrosGlobalCb,
     &mavrosGlobalPosition);
-  behaviours = au::Behaviours::getInstance();
+  mavrosHeartSub = n.subscribe("/heart", 1, &WorldModel::mavrosHeartCb, this);
+  behaviours = Behaviours::getInstance();
   isFirstAltSet = false;
-  isHeartSeen = false;
 }
 
 void WorldModel::init()
@@ -79,4 +79,12 @@ bool WorldModel::isMissionStarted()
 void WorldModel::setStartMission(bool missionState)
 {
   startMission = missionState;
+}
+
+void WorldModel::mavrosHeartCb(const aurora_vision::heart &msg)
+{
+  heart.isSeen = true;
+  heart.x = msg.X;
+  heart.y = msg.Y;
+  heart.distance = msg.Distance;
 }

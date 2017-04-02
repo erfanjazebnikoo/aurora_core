@@ -18,7 +18,6 @@
 #include <mavros_msgs/WaypointPush.h>
 #include <mavros_msgs/OverrideRCIn.h>
 #include <rviz_satellite/ReadTakeoffGps.h>
-#include <aurora_vision/heart.h>
 #include <ros/ros.h>
 #include "WayPoint.h"
 #include <QList>
@@ -43,7 +42,6 @@ namespace au {
         void readTakeoffGps();
         double getTakeoffGpsLat();
         double getTakeoffGpsLon();
-        void mavrosHeartCb(const aurora_vision::heart &msg);
         QList<au::WayPoint> &getWayPoints();
         au::WayPoint getWayPoint(int numOfWayPoint);
 
@@ -71,8 +69,6 @@ namespace au {
 
         ros::ServiceClient read_takeoff_gps_cl;
         rviz_satellite::ReadTakeoffGps srv_read_takeoff_gps;
-
-        ros::Subscriber mavrosHeartSub;
     };
 
 } /* namespace au */
