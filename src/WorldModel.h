@@ -18,6 +18,7 @@
 #include "MavrosGlobalPosition.h"
 #include "Behaviours.h"
 #include "Geometry.h"
+#include "GpsCoordination.h"
 
 using namespace std;
 
@@ -44,15 +45,13 @@ namespace au {
         void setStartMission(bool missionState);
 
         struct Me {
-            double lat;
-            double lon;
-            double alt;
+            GpsCoordination selfPosition;
             bool isArmed;
             bool isConnected;
             string mode;
             string modeChange;
 
-            Me() : lat(0), lon(0), alt(0), isArmed(false), isConnected(false), mode(""), modeChange("") {
+            Me() : selfPosition(0.0, 0.0, 0.0), isArmed(false), isConnected(false), mode(""), modeChange("") {
             }
         } me;
     };

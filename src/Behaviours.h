@@ -21,6 +21,7 @@
 #include <ros/ros.h>
 #include "WayPoint.h"
 #include <QList>
+#include "GpsCoordination.h"
 
 namespace au {
 

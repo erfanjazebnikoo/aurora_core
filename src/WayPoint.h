@@ -11,17 +11,17 @@
 #ifndef WAYPOINT_H_
 #define WAYPOINT_H_
 
+#include "GpsCoordination.h"
+
 namespace au {
 
     class WayPoint {
     public:
-        WayPoint(double lat, double lon, int alt);
+        WayPoint(GpsCoordination position);
         ~WayPoint();
 
     public:
-        double lat;
-        double lon;
-        int alt;
+        GpsCoordination position;
     };
 
 } /* namespace au */

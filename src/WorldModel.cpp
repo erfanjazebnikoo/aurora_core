@@ -51,17 +51,17 @@ void WorldModel::update()
 
 void WorldModel::updateMyInformation()
 {
-  if (!isFirstAltSet && mavrosGlobalPosition.alt > 1.0)
+  if (!isFirstAltSet && mavrosGlobalPosition.position.getAltitude() > 1.0)
   {
-    firstAlt = this->mavrosGlobalPosition.alt;
+    firstAlt = this->mavrosGlobalPosition.position.getAltitude();
     isFirstAltSet = true;
   }
 
   if (isFirstAltSet)
   {
-    me.lat = this->mavrosGlobalPosition.lat;
-    me.lon = this->mavrosGlobalPosition.lon;
-    me.alt = this->mavrosGlobalPosition.alt - firstAlt;
+    me.selfPosition.setLatitude(this->mavrosGlobalPosition.position.getLatitude());
+    me.selfPosition.setLongitude(this->mavrosGlobalPosition.position.getLongitude());
+    me.selfPosition.setAltitude(this->mavrosGlobalPosition.position.getAltitude() - firstAlt);
   }
 
   me.isArmed = shareMemory->getArmed();

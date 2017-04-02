@@ -10,18 +10,16 @@
 
 #include "WayPoint.h"
 
-namespace au
-{
+using namespace au;
 
-WayPoint::WayPoint(double lat, double lon, int alt) :
-  lat(lat), lon(lon), alt(alt)
+WayPoint::WayPoint(GpsCoordination position)
 {
-  // TODO Auto-generated constructor stub
+  this->position.setLatitude(position.getLatitude());
+  this->position.setLongitude(position.getLongitude());
+  this->position.setAltitude(position.getAltitude());
 }
 
 WayPoint::~WayPoint()
 {
   // TODO Auto-generated destructor stub
 }
-
-} /* namespace au */

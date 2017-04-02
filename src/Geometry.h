@@ -16,23 +16,11 @@
 
 namespace au {
 
-    class Distance {
-    public:
-        Distance();
-        double distanceEarth(double lat1d, double lon1d, double lat2d, double lon2d);
-        ~Distance();
-
-    private:
-
-        double deg2rad(double deg) {
-            return (deg * M_PI / 180);
-        }
-
-        double rad2deg(double rad) {
-            return (rad * 180 / M_PI);
-        }
-    };
-
+    namespace geo {
+        
+        double deg2rad(double deg);
+        double rad2deg(double rad);
+    }
 } /* namespace au */
 
 #endif /* GEOMETRY_H_ */

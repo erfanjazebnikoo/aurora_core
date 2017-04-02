@@ -38,6 +38,8 @@ set(GUI_SOURCE_FILES
 	src/Geometry.cpp
 	src/MavrosGlobalPosition.cpp
 	src/Autopilot.cpp
+	src/Counter.cpp
+	src/GpsCoordination.cpp
 )
 
 set(GUI_HEADER_FILES         
@@ -56,6 +58,8 @@ set(GUI_HEADER_FILES
 	src/Geometry.h
 	src/MavrosGlobalPosition.h
 	src/Autopilot.h
+	src/Counter.h
+	src/GpsCoordination.h
 )
 
 

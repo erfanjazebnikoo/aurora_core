@@ -37,7 +37,7 @@ void UserInterface::init()
 
 void UserInterface::readPendingDatagrams()
 {
-  ROS_INFO("I Heard command");
+  //  ROS_INFO("I Heard command");
   Parser parser;
   parser.pWorld = au::WorldModel::getInstance();
   parser.pBehaviours = au::Behaviours::getInstance();
@@ -58,7 +58,7 @@ void UserInterface::readPendingDatagrams()
 
 void UserInterface::Parser::do_mavros_state()
 {
-  ROS_INFO("I Heard do_mavros_state");
+  //  ROS_INFO("I Heard do_mavros_state");
 
   int connected = pWorld->me.isConnected;
   int armed = pWorld->me.isArmed;
@@ -123,17 +123,18 @@ bool UserInterface::Parser::fromXMLtoWP(const QString &commands, QList<au::WayPo
 
   QDomNodeList itemsNode = doc.elementsByTagName("item");
 
+  GpsCoordination position;
+
   for (int i = 0; i < itemsNode.size(); i++)
   {
     QDomElement item = itemsNode.at(i).toElement();
 
     if (item.hasAttribute("name") && item.hasAttribute("alt") && item.hasAttribute("lon") && item.hasAttribute("lat"))
     {
-      wp.append(
-        au::WayPoint(item.attribute("lat").toFloat(), item.attribute("lon").toFloat(),
-        item.attribute("alt").toInt()));
-      std::cout << item.attribute("lat").toFloat() << std::endl << item.attribute("lon").toFloat() << std::endl
-        << item.attribute("alt").toInt() << std::endl;
+      position.init(item.attribute("lat").toFloat(), item.attribute("lon").toFloat(), item.attribute("alt").toInt());
+      wp.append(au::WayPoint(position));
+      //      std::cout << item.attribute("lat").toFloat() << std::endl << item.attribute("lon").toFloat() << std::endl
+      //        << item.attribute("alt").toInt() << std::endl;
     }
   }
 

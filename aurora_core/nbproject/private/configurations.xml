@@ -10,8 +10,12 @@
       <in>Core.h</in>
       <in>CoreStarter.cpp</in>
       <in>CoreStarter.h</in>
+      <in>Counter.cpp</in>
+      <in>Counter.h</in>
       <in>Geometry.cpp</in>
       <in>Geometry.h</in>
+      <in>GpsCoordination.cpp</in>
+      <in>GpsCoordination.h</in>
       <in>Library.cpp</in>
       <in>Library.h</in>
       <in>MavRosSetStreamRate.cpp</in>
