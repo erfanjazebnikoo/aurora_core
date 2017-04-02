@@ -47,11 +47,16 @@ namespace au {
         bool isNextWayPointSet;
         Counter wayPointCounter;
         Counter updateCounter;
+        bool isRobotAboveOfVictim;
+        bool isRescueCompleted;
+        double rescueAltitude;
+        bool decreaseAltForRescue;
+        
         void stateHandler();
         void wayPointsHandler();
         void currentStateDecisionMaker();
         bool readyForUpdate();
-
+        void setRobotAboveOfVictim();
     };
 }
 #endif	/* AUTOPILOT_H */

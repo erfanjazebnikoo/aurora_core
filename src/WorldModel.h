@@ -54,6 +54,18 @@ namespace au {
             Me() : selfPosition(0.0, 0.0, 0.0), isArmed(false), isConnected(false), mode(""), modeChange("") {
             }
         } me;
+
+        struct Heart {
+            bool isSeen;
+            double x;
+            double y;
+            double distance;
+
+            Heart() : isSeen(false), x(0.0), y(0.0), distance(0.0) {
+            }
+        } heart;
+
+        bool isHeartSeen;
     };
 
 } // namespace au

@@ -30,6 +30,7 @@ WorldModel::WorldModel() :
     &mavrosGlobalPosition);
   behaviours = au::Behaviours::getInstance();
   isFirstAltSet = false;
+  isHeartSeen = false;
 }
 
 void WorldModel::init()

@@ -51,7 +51,7 @@
   <run_depend>roscpp</run_depend>
   <run_depend>mavros</run_depend>
   <run_depend>mavros_msgs</run_depend>
-  
+  <run_depend>message_runtime</run_depend>
   
 
 

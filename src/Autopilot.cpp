@@ -17,7 +17,8 @@ using namespace std;
 bool takeOffFlag;
 bool wpFlag;
 
-double takeOffAlt = 20.0;
+double takeOffAlt = 10.0;
+bool findVictimExecute = false;
 
 Autopilot::Autopilot()
 {
@@ -35,6 +36,11 @@ Autopilot::Autopilot()
   wayPointCounter.init(100);
   reachedWayPoints.clear();
   isNextWayPointSet = false;
+
+  isRobotAboveOfVictim = false;
+  isRescueCompleted = false;
+  rescueAltitude = 0;
+  decreaseAltForRescue = false;
 }
 
 Autopilot::~Autopilot()
@@ -43,14 +49,47 @@ Autopilot::~Autopilot()
 
 void Autopilot::execute()
 {
-  if (readyForUpdate())
-  {
-    wayPointsHandler();
-    currentStateDecisionMaker();
 
-    if (needUpdate)
+  if (isRobotAboveOfVictim && findVictimExecute)
+  {
+    if (world->heart.distance > 1.0 ||
+        (rescueAltitude - world->me.selfPosition.getAltitude() <= 5.1 &&
+        rescueAltitude - world->me.selfPosition.getAltitude() >= 4.9))
+
     {
-      stateHandler();
+      setRobotAboveOfVictim();
+    }
+    else
+    {
+      if (!decreaseAltForRescue)
+      {
+        double newAlt;
+        if (world->me.selfPosition.getAltitude() - 5.0 < 5.0)
+          newAlt = world->me.selfPosition.getAltitude();
+        else
+          newAlt = world->me.selfPosition.getAltitude() - 5.0;
+
+        ROS_WARN("Autopilot => Decrease Altitude For Rescue...!");
+        behaviours->guidedMode();
+        behaviours->goToWayPoint(world->me.selfPosition.getLatitude(),
+          world->me.selfPosition.getLongitude(),
+          newAlt);
+        decreaseAltForRescue = true;
+      }
+      rescueAltitude = world->me.selfPosition.getAltitude();
+    }
+  }
+  else
+  {
+    if (readyForUpdate())
+    {
+      wayPointsHandler();
+      currentStateDecisionMaker();
+
+      if (needUpdate)
+      {
+        stateHandler();
+      }
     }
   }
 }
@@ -84,6 +123,12 @@ void Autopilot::currentStateDecisionMaker()
     isNextWayPointSet = false;
     needUpdate = true;
   }
+  else if (world->isHeartSeen && !isRescueCompleted)
+  {
+    currentState = STATE_FIND_VICTIM;
+    isRobotAboveOfVictim = true;
+    needUpdate = true;
+  }
   else if (wayPointCounter.getCount() == behaviours->getWayPoints().size() - 1 &&
            world->me.selfPosition.distance(currentWayPoint->position) < 2.0)
   {
@@ -100,23 +145,19 @@ void Autopilot::stateHandler()
     case STATE_GUIDED_MODE:
       ROS_WARN("Autopilot => Guided Mode Started...!");
       behaviours->guidedMode();
-      needUpdate = false;
       break;
     case STATE_ARM:
       ROS_WARN("Autopilot => Armed...!");
       behaviours->arm();
-      needUpdate = false;
       break;
     case STATE_TAKE_OFF:
       ROS_WARN("Autopilot => Take Off...!");
       behaviours->takeOff(QString::number(takeOffAlt));
-      needUpdate = false;
       break;
     case STATE_WAYPOINT_START:
       ROS_WARN("Autopilot => Way Point Started...!");
       behaviours->goToWayPoint(currentWayPoint->position);
       isWayPointStarted = true;
-      needUpdate = false;
       break;
     case STATE_WAYPOINT_CURRENT:
       //
@@ -124,10 +165,12 @@ void Autopilot::stateHandler()
     case STATE_WAYPOINT_NEXT:
       ROS_WARN("Autopilot => Next Way Point Started...!");
       behaviours->goToWayPoint(currentWayPoint->position);
-      needUpdate = false;
       break;
     case STATE_FIND_VICTIM:
-      //@TODO: handle find victim
+      ROS_WARN("Autopilot => Find Victim Started...!");
+      rescueAltitude = world->me.selfPosition.getAltitude();
+      behaviours->loiterMode();
+      setRobotAboveOfVictim();
       break;
     case STATE_DROP_LIFEBUOY:
       //@TODO: handle drop life buoy
@@ -140,12 +183,12 @@ void Autopilot::stateHandler()
       break;
     case STATE_RETURN_TO_HOME:
       behaviours->rtlMode();
-      needUpdate = false;
       break;
     default:
       //@TODO: do nothing in this time
       break;
   }
+  needUpdate = false;
 }
 
 void Autopilot::wayPointsHandler()
@@ -166,9 +209,13 @@ void Autopilot::wayPointsHandler()
 
 bool Autopilot::readyForUpdate()
 {
+  if (world->isHeartSeen && !isRescueCompleted)
+  {
+    return true;
+  }
   if (updateCounter.getState())
   {
-    ROS_WARN("Autopilot => Ready for Update...!");
+    //    ROS_WARN("Autopilot => Ready for Update...!");
     updateCounter.reset();
     return true;
   }
@@ -177,4 +224,28 @@ bool Autopilot::readyForUpdate()
     updateCounter.increase();
     return false;
   }
+}
+
+void Autopilot::setRobotAboveOfVictim()
+{
+  isRobotAboveOfVictim = true;
+
+  if (world->heart.x > 0)
+  {
+    behaviours->radioControlDataOverride(1515, 1500, 1500, 1500);
+  }
+  else if (world->heart.x < 0)
+  {
+    behaviours->radioControlDataOverride(1485, 1500, 1500, 1500);
+  }
+  if (world->heart.y > 0)
+  {
+    behaviours->radioControlDataOverride(1500, 1485, 1500, 1500);
+  }
+  else if (world->heart.y < 0)
+  {
+    behaviours->radioControlDataOverride(1500, 1515, 1500, 1500);
+  }
+  // ba tavajoh be makane ghalb dar tasvir 
+  // robot control shavad.
 }
