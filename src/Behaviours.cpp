@@ -16,6 +16,7 @@ using namespace au;
 UNIQUE_INSTANCE_VARIABLE(Behaviours)
 Behaviours::Behaviours()
 {
+  mavrosHeartSub = n.subscribe("/heart", 1, &Behaviours::mavrosHeartCb, this);
   takeoff_cl = n.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
   cl_mode = n.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
   arming_cl = n.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");
@@ -167,4 +168,11 @@ double Behaviours::getTakeoffGpsLat()
 double Behaviours::getTakeoffGpsLon()
 {
   return this->takeoff_gps_lon;
+}
+
+void Behaviours::mavrosHeartCb(const aurora_vision::heart &msg)
+{
+  std::cout << "X=" << msg.X << std::endl;
+  std::cout << "Y=" << msg.Y << std::endl;
+  std::cout << "Distance=" << msg.Distance << std::endl;
 }

@@ -9,13 +9,6 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/UserInterface.cpp</file>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/UICmdParser.cpp</file>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/UICmdParser.h</file>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/UICmdResponse.cpp</file>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/UserInterface.h</file>
-            <file>file:/home/sajjadtest/catkin_aurora_core_netbeans/src/aurora_core/src/Autopilot.cpp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
