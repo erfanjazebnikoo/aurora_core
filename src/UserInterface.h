@@ -47,6 +47,7 @@ namespace au {
             virtual void do_fill_wayPoint(const QString &commands);
             virtual void do_start_mission();
             virtual void do_read_takeoff_gps();
+            virtual void do_heart(const QString &lat, const QString &lon);
 
             bool fromXMLtoWP(const QString &commands, QList<au::WayPoint> &wp);
         public:

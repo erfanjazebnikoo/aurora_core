@@ -153,8 +153,8 @@ void UserInterface::Parser::do_start_mission()
 
 void UserInterface::Parser::do_land_mode()
 {
-    pBehaviours->landMode();
-    doWrite = false;
+  pBehaviours->landMode();
+  doWrite = false;
 }
 
 void UserInterface::Parser::do_rtl_mode()
@@ -167,10 +167,18 @@ void UserInterface::Parser::do_read_takeoff_gps()
 {
   pBehaviours->readTakeoffGps();
   UICmdResponse response(about::VERSION, lastCommand, UICmdResponse::E_OK);
-  response.items.append(UICmdResponse::Item(1, "takeoff_lat", QString("%1").arg(pBehaviours->getTakeoffGpsLat(),0,'g',13)));
-  response.items.append(UICmdResponse::Item(1, "takeoff_lon", QString("%1").arg(pBehaviours->getTakeoffGpsLon(),0,'g',13)));
+  response.items.append(UICmdResponse::Item(1, "takeoff_lat", QString("%1").arg(pBehaviours->getTakeoffGpsLat(), 0, 'g', 13)));
+  response.items.append(UICmdResponse::Item(1, "takeoff_lon", QString("%1").arg(pBehaviours->getTakeoffGpsLon(), 0, 'g', 13)));
 
   resultString = response.toXML();
-  std::cout<<resultString.toStdString()<<std::endl;
+  std::cout << resultString.toStdString() << std::endl;
   doWrite = true;
+}
+
+void UserInterface::Parser::do_heart(const QString &lat, const QString &lon)
+{
+  //To Do Heart;
+  ROS_INFO("I Heard command %f", lat.toDouble());
+  ROS_INFO("I Heard command %f", lon.toDouble());
+
 }
