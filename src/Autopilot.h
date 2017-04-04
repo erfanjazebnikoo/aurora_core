@@ -27,13 +27,11 @@ namespace au {
             STATE_GUIDED_MODE = 0,
             STATE_ARM = 1,
             STATE_TAKE_OFF = 2,
-            STATE_WAYPOINT_START = 3,
-            STATE_WAYPOINT_CURRENT = 4,
-            STATE_WAYPOINT_NEXT = 5,
-            STATE_FIND_VICTIM = 6,
-            STATE_DROP_LIFEBUOY = 7,
-            STATE_WAYPOINT_RESUME = 8,
-            STATE_WAYPOINT_FINISH = 9,
+            STATE_GO_TO_VICTIM = 3,
+            STATE_FIND_VICTIM = 4,
+            STATE_DROP_LIFEBUOY = 5,
+            STATE_WAYPOINT_START = 6,
+            STATE_WAYPOINT_NEXT = 8,
             STATE_RETURN_TO_HOME = 10
         };
     private:
@@ -47,16 +45,23 @@ namespace au {
         bool isNextWayPointSet;
         Counter wayPointCounter;
         Counter updateCounter;
+
+        //////////////////////////////////////////// Victim and Lifebuoy
+        Counter releaseLifebuoyCounter;
+        bool isGotoHeartPosition;
         bool isRobotAboveOfVictim;
         bool isRescueCompleted;
-        double rescueAltitude;
         bool decreaseAltForRescue;
-        
+
+        //////////////////////////////////////////// Landing
+        GpsCoordination takeOffPosition;
+
         void stateHandler();
         void wayPointsHandler();
         void currentStateDecisionMaker();
         bool readyForUpdate();
         void setRobotAboveOfVictim();
+        void releaseLifebuoyDesicionMaker();
     };
 }
 #endif	/* AUTOPILOT_H */

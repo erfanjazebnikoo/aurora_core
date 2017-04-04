@@ -222,6 +222,22 @@ void Behaviours::radioControlDataOverride(double roll, double pitch, double thro
   rcOverridePub.publish(msgOverride);
 }
 
+void Behaviours::radioControlDataOverride(double roll, double pitch, double throttle, double yaw,double gripperServo)
+{
+  mavros_msgs::OverrideRCIn msgOverride;
+
+    msgOverride.channels[0] = roll;
+    msgOverride.channels[1] = pitch;
+    msgOverride.channels[2] = throttle;
+    msgOverride.channels[3] = yaw;
+  //  msgOverride.channels[4] = 0; 
+  //  msgOverride.channels[5] = 0; 
+  //  msgOverride.channels[6] = 0; 
+  msgOverride.channels[7] = gripperServo;
+
+  rcOverridePub.publish(msgOverride);
+}
+
 void Behaviours::readTakeoffGps()
 {
   if (read_takeoff_gps_cl.call(srv_read_takeoff_gps))

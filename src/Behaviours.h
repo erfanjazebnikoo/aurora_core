@@ -35,6 +35,7 @@ namespace au {
         bool rtlMode();
         bool loiterMode();
         void radioControlDataOverride(double roll, double pitch, double throttle, double yaw);
+        void radioControlDataOverride(double roll, double pitch, double throttle, double yaw, double gripperServo);
         bool arm();
         bool disarm();
         bool goToWayPoint(GpsCoordination target);

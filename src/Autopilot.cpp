@@ -37,10 +37,15 @@ Autopilot::Autopilot()
   reachedWayPoints.clear();
   isNextWayPointSet = false;
 
+  //////////////////////////////////////////// Victim and Lifebuoy
+  isGotoHeartPosition = false;
   isRobotAboveOfVictim = false;
   isRescueCompleted = false;
-  rescueAltitude = 0;
   decreaseAltForRescue = false;
+  releaseLifebuoyCounter.init(200);
+
+  //////////////////////////////////////////// Landing
+  takeOffPosition.init();
 }
 
 Autopilot::~Autopilot()
@@ -52,32 +57,7 @@ void Autopilot::execute()
 
   if (isRobotAboveOfVictim && findVictimExecute)
   {
-    if (world->heart.distance > 5.0)/* ||
-        (rescueAltitude - world->me.selfPosition.getAltitude() <= 5.1 &&
-        rescueAltitude - world->me.selfPosition.getAltitude() >= 4.9)*/
-
-    {
-      setRobotAboveOfVictim();
-    }
-    //    else
-    //    {
-    //      if (!decreaseAltForRescue)
-    //      {
-    //        double newAlt;
-    //        if (world->me.selfPosition.getAltitude() - 5.0 < 5.0)
-    //          newAlt = world->me.selfPosition.getAltitude();
-    //        else
-    //          newAlt = world->me.selfPosition.getAltitude() - 5.0;
-    //
-    //        ROS_WARN("Autopilot => Decrease Altitude For Rescue...!");
-    //        behaviours->guidedMode();
-    //        behaviours->goToWayPoint(world->me.selfPosition.getLatitude(),
-    //          world->me.selfPosition.getLongitude(),
-    //          newAlt);
-    //        decreaseAltForRescue = true;
-    //      }
-    //      rescueAltitude = world->me.selfPosition.getAltitude();
-    //    }
+    releaseLifebuoyDesicionMaker();
   }
   else
   {
@@ -109,10 +89,22 @@ void Autopilot::currentStateDecisionMaker()
   else if (currentState == STATE_ARM && !takeOffFlag)
   {
     currentState = STATE_TAKE_OFF;
+    takeOffPosition.init(world->me.selfPosition);
     takeOffFlag = true;
     needUpdate = true;
   }
-  else if (takeOffAlt - world->me.selfPosition.getAltitude() < 1.0 && !isWayPointStarted)
+  else if (takeOffAlt - world->me.selfPosition.getAltitude() < 1.0 && !isGotoHeartPosition)
+  {
+    currentState = STATE_WAYPOINT_START;
+    needUpdate = true;
+  }
+  else if (world->heart.isSeen && !isRescueCompleted)
+  {
+    currentState = STATE_FIND_VICTIM;
+    isRobotAboveOfVictim = true;
+    needUpdate = true;
+  }
+  else if (isRescueCompleted && !isWayPointStarted)
   {
     currentState = STATE_WAYPOINT_START;
     needUpdate = true;
@@ -154,33 +146,26 @@ void Autopilot::stateHandler()
       ROS_WARN("Autopilot => Take Off...!");
       behaviours->takeOff(QString::number(takeOffAlt));
       break;
+    case STATE_GO_TO_VICTIM:
+      ROS_WARN("Autopilot => Way Point Started...!");
+      behaviours->goToWayPoint(currentWayPoint->position/* Heart Position */);
+      isGotoHeartPosition = true;
+      break;
+    case STATE_FIND_VICTIM:
+      ROS_WARN("Autopilot => Find Victim Started...!");
+      behaviours->loiterMode();
+      setRobotAboveOfVictim();
+      break;
     case STATE_WAYPOINT_START:
       ROS_WARN("Autopilot => Way Point Started...!");
       behaviours->goToWayPoint(currentWayPoint->position);
       isWayPointStarted = true;
       break;
-    case STATE_WAYPOINT_CURRENT:
-      //
-      break;
     case STATE_WAYPOINT_NEXT:
       ROS_WARN("Autopilot => Next Way Point Started...!");
       behaviours->goToWayPoint(currentWayPoint->position);
       break;
-    case STATE_FIND_VICTIM:
-      ROS_WARN("Autopilot => Find Victim Started...!");
-      rescueAltitude = world->me.selfPosition.getAltitude();
-      behaviours->loiterMode();
-      setRobotAboveOfVictim();
-      break;
-    case STATE_DROP_LIFEBUOY:
-      //@TODO: handle drop life buoy
-      break;
-    case STATE_WAYPOINT_RESUME:
-      //@TODO: handle current way point
-      break;
-    case STATE_WAYPOINT_FINISH:
-      //@TODO: handle current way point
-      break;
+
     case STATE_RETURN_TO_HOME:
       behaviours->rtlMode();
       break;
@@ -230,26 +215,59 @@ void Autopilot::setRobotAboveOfVictim()
 {
   isRobotAboveOfVictim = true;
 
-  if (world->heart.x > 160)
+  if (world->heart.x > 163)
   {
     ROS_ERROR("Autopilot => Go Right for find victim...!");
     behaviours->radioControlDataOverride(1600, 1500, 1500, 1500);
   }
-  else if (world->heart.x < 160)
+  else if (world->heart.x < 157)
   {
     ROS_INFO("Autopilot => Go Left for find victim...!");
     behaviours->radioControlDataOverride(1400, 1500, 1500, 1500);
   }
-  if (world->heart.y < 120)
+  else if (world->heart.y < 123)
   {
     ROS_ERROR("Autopilot => Go Forward for find victim...!");
     behaviours->radioControlDataOverride(1500, 1400, 1500, 1500);
   }
-  else if (world->heart.y > 120)
+  else if (world->heart.y > 117)
   {
     ROS_INFO("Autopilot => Go Back for find victim...!");
     behaviours->radioControlDataOverride(1500, 1600, 1500, 1500);
   }
-  // ba tavajoh be makane ghalb dar tasvir 
-  // robot control shavad.
 }
+
+void Autopilot::releaseLifebuoyDesicionMaker()
+{
+  if (world->heart.distance > 5.0)
+  {
+    setRobotAboveOfVictim();
+  }
+  else
+  {
+    if (world->me.selfPosition.getAltitude() >= 3.0)
+    {
+      ROS_INFO("Autopilot => Decreasing Altitude for releasing lifebuoy...!");
+      behaviours->radioControlDataOverride(1500, 1500, 1400, 1500);
+    }
+    else
+    {
+      if (!releaseLifebuoyCounter.getState())
+      {
+        ROS_INFO("Autopilot => Releasing lifebuoy...!");
+        behaviours->radioControlDataOverride(1500, 1500, 1500, 1500, 2000);
+        releaseLifebuoyCounter.increase();
+      }
+      else
+      {
+        ROS_INFO("Autopilot => Lifebuoy released successfully...!");
+        behaviours->radioControlDataOverride(1500, 1500, 1500, 1500, 1500);
+        isRescueCompleted = true;
+        findVictimExecute = false;
+        isRobotAboveOfVictim = false;
+        ROS_WARN("Autopilot => Find Victim Finished...!");
+      }
+    }
+  }
+}
+
