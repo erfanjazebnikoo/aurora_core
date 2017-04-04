@@ -19,6 +19,7 @@ const QString TOKEN_ARM = "Arm";
 const QString TOKEN_DISARM = "Disarm";
 const QString TOKEN_START_MISSION = "StartMission";
 const QString TOKEN_READ_TAKEOFF_GPS = "ReadTakeoffGps";
+const QString TOKEN_HEART = "Heart";
 const QChar COMMAND_SEPARATOR = ';';
 
 namespace au
@@ -89,6 +90,10 @@ void UICmdParser::parse(const QString &commands)
         else if (parts[0] == TOKEN_READ_TAKEOFF_GPS)
         {
           do_read_takeoff_gps();
+        }
+        else if (parts[0] == TOKEN_HEART)
+        {
+          do_heart(parts[1],parts[2]);
         }
       }
     }

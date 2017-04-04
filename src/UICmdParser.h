@@ -42,6 +42,7 @@ namespace au {
         virtual void do_land_mode() = 0;
         virtual void do_rtl_mode() = 0;
         virtual void do_read_takeoff_gps() = 0;
+        virtual void do_heart(const QString &lat, const QString &lon) = 0;
 
     protected:
         QString resultString;
