@@ -11,6 +11,7 @@
 
 #include "UserInterface.h"
 #include "UICmdResponse.h"
+#include "GpsCoordination.h"
 #include <iostream>
 //#include <mavros_msgs/CommandTOL.h>
 using namespace au;
@@ -153,9 +154,8 @@ void UserInterface::Parser::do_start_mission()
 
 void UserInterface::Parser::do_land_mode()
 {
-  //  pBehaviours->landMode();
-  //  doWrite = false;
-  pWorld->heart.isSeen = true;
+  pBehaviours->landMode();
+  doWrite = false;
 }
 
 void UserInterface::Parser::do_rtl_mode()
