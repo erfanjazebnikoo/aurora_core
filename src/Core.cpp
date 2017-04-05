@@ -13,6 +13,7 @@
 #include "WorldModel.h"
 #include "UserInterface.h"
 #include "Autopilot.h"
+#include "AutoMission.h"
 
 using namespace au;
 using namespace std;
@@ -46,14 +47,14 @@ void Core::init()
 void Core::Thread::run()
 {
   au::WorldModel * wm = au::WorldModel::getInstance();
-  Autopilot *autopilot = new Autopilot();
+  AutoMission *autoMission = new AutoMission();
   while (true)
   {
     msleep(20);
     //    ROS_INFO("hi *********");
     wm->update();
     if (wm->isMissionStarted())
-      autopilot->execute();
+      autoMission->execute();
   }
 }
 

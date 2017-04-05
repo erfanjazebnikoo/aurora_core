@@ -94,3 +94,20 @@ double GpsCoordination::distance(GpsCoordination targets)
   v = sin((lon2r - lon1r) / 2);
   return 2.0 * earthRadiusKm * asin(sqrt(u * u + cos(lat1r) * cos(lat2r) * v * v)) * 1000.0;
 }
+
+GpsCoordination GpsCoordination::generateCoordinationWithRAndTheta(GpsCoordination startCordination,
+  int r, int theta)
+{
+  double dx = r * cos(theta);
+  double dy = r * sin(theta);
+
+  double delta_longitude = dx / (111320 * cos(startCordination.getLatitude()));
+  double delta_latitude = dy / 110540;
+
+  GpsCoordination newCoordination;
+  newCoordination.init(startCordination.getLatitude() + delta_latitude,
+    startCordination.getLongitude() + delta_longitude,
+    startCordination.getAltitude());
+  return newCoordination;
+}
+

@@ -63,8 +63,10 @@ namespace au {
             double x;
             double y;
             double distance;
+            double firstLatitude;
+            double firstLongtidue;
 
-            Heart() : isSeen(false), x(0.0), y(0.0), distance(0.0) {
+            Heart() : isSeen(false), x(0.0), y(0.0), distance(0.0), firstLatitude(0.0), firstLongtidue(0.0) {
             }
         } heart;
     };

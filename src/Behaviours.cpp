@@ -206,6 +206,22 @@ bool Behaviours::loiterMode()
   }
 }
 
+bool Behaviours::autoMode()
+{
+  srv_setMode.request.base_mode = 0;
+  srv_setMode.request.custom_mode = "AUTO";
+  if (cl_mode.call(srv_setMode))
+  {
+    ROS_INFO("Behaviours => Set Auto Mode Successful...!");
+    return srv_setMode.response.success;
+  }
+  else
+  {
+    ROS_ERROR("Behaviours => Set Auto Mode Failed...!");
+    return srv_setMode.response.success;
+  }
+}
+
 void Behaviours::radioControlDataOverride(double roll, double pitch, double throttle, double yaw)
 {
   mavros_msgs::OverrideRCIn msgOverride;
@@ -222,14 +238,30 @@ void Behaviours::radioControlDataOverride(double roll, double pitch, double thro
   rcOverridePub.publish(msgOverride);
 }
 
-void Behaviours::radioControlDataOverride(double roll, double pitch, double throttle, double yaw,double gripperServo)
+void Behaviours::radioControlDataOverride(double roll, double pitch, double throttle, double yaw, double gripperServo)
 {
   mavros_msgs::OverrideRCIn msgOverride;
 
-    msgOverride.channels[0] = roll;
-    msgOverride.channels[1] = pitch;
-    msgOverride.channels[2] = throttle;
-    msgOverride.channels[3] = yaw;
+  msgOverride.channels[0] = roll;
+  msgOverride.channels[1] = pitch;
+  msgOverride.channels[2] = throttle;
+  msgOverride.channels[3] = yaw;
+  //  msgOverride.channels[4] = 0; 
+  //  msgOverride.channels[5] = 0; 
+  //  msgOverride.channels[6] = 0; 
+  msgOverride.channels[7] = gripperServo;
+
+  rcOverridePub.publish(msgOverride);
+}
+
+void Behaviours::radioControlDataOverride(double gripperServo)
+{
+  mavros_msgs::OverrideRCIn msgOverride;
+
+  //  msgOverride.channels[0] = roll;
+  //  msgOverride.channels[1] = pitch;
+  //  msgOverride.channels[2] = throttle;
+  //  msgOverride.channels[3] = yaw;
   //  msgOverride.channels[4] = 0; 
   //  msgOverride.channels[5] = 0; 
   //  msgOverride.channels[6] = 0; 

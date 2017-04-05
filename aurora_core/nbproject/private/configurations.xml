@@ -2,6 +2,8 @@
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="../src" name="0">
+      <in>AutoMission.cpp</in>
+      <in>AutoMission.h</in>
       <in>Autopilot.cpp</in>
       <in>Autopilot.h</in>
       <in>Behaviours.cpp</in>

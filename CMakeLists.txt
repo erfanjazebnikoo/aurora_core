@@ -40,6 +40,7 @@ set(GUI_SOURCE_FILES
 	src/Autopilot.cpp
 	src/Counter.cpp
 	src/GpsCoordination.cpp
+	src/AutoMission.cpp
 )
 
 set(GUI_HEADER_FILES         
@@ -60,6 +61,7 @@ set(GUI_HEADER_FILES
 	src/Autopilot.h
 	src/Counter.h
 	src/GpsCoordination.h
+	src/AutoMission.h
 )
 
 

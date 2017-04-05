@@ -32,6 +32,8 @@ namespace au {
         void setAltitude(double altitude);
 
         double distance(GpsCoordination targets);
+        GpsCoordination generateCoordinationWithRAndTheta(GpsCoordination startCordination,
+                int r, int theta);
     private:
         double latitude;
         double longitude;

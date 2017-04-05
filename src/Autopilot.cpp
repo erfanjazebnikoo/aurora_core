@@ -95,7 +95,7 @@ void Autopilot::currentStateDecisionMaker()
   }
   else if (takeOffAlt - world->me.selfPosition.getAltitude() < 1.0 && !isGotoHeartPosition)
   {
-    currentState = STATE_WAYPOINT_START;
+    currentState = STATE_GO_TO_VICTIM;
     needUpdate = true;
   }
   else if (world->heart.isSeen && !isRescueCompleted)
@@ -132,6 +132,9 @@ void Autopilot::currentStateDecisionMaker()
 
 void Autopilot::stateHandler()
 {
+  GpsCoordination heartPosition;
+  heartPosition.init(world->heart.firstLatitude, world->heart.firstLongtidue,
+    world->me.selfPosition.getLatitude());
   switch (currentState)
   {
     case STATE_GUIDED_MODE:
@@ -147,8 +150,8 @@ void Autopilot::stateHandler()
       behaviours->takeOff(QString::number(takeOffAlt));
       break;
     case STATE_GO_TO_VICTIM:
-      ROS_WARN("Autopilot => Way Point Started...!");
-      behaviours->goToWayPoint(currentWayPoint->position/* Heart Position */);
+      ROS_WARN("Autopilot => Go to Heart Position Started...!");
+      behaviours->goToWayPoint(heartPosition);
       isGotoHeartPosition = true;
       break;
     case STATE_FIND_VICTIM:

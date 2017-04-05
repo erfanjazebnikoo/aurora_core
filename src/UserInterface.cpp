@@ -153,8 +153,9 @@ void UserInterface::Parser::do_start_mission()
 
 void UserInterface::Parser::do_land_mode()
 {
-  pBehaviours->landMode();
-  doWrite = false;
+  //  pBehaviours->landMode();
+  //  doWrite = false;
+  pWorld->heart.isSeen = true;
 }
 
 void UserInterface::Parser::do_rtl_mode()
@@ -178,7 +179,8 @@ void UserInterface::Parser::do_read_takeoff_gps()
 void UserInterface::Parser::do_heart(const QString &lat, const QString &lon)
 {
   //To Do Heart;
-  ROS_INFO("I Heard command %f", lat.toDouble());
-  ROS_INFO("I Heard command %f", lon.toDouble());
-
+  ROS_INFO("UserInterface => I Heard command %f", lat.toDouble());
+  ROS_INFO("UserInterface => I Heard command %f", lon.toDouble());
+  pWorld->heart.firstLatitude = lat.toDouble();
+  pWorld->heart.firstLongtidue = lon.toDouble();
 }
