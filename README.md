@@ -1,7 +1,8 @@
 # aurora_core
-----------
 
 Core program of autonomous multi rotor robots based on APM autopilot.We use ROS platform and Mavlink protocol for connection between program and robot.
+A multirotor or multicopter is a rotorcraft with more than two rotors. An advantage of multirotor aircraft is the simpler rotor mechanics required for flight control. 
+We designed, optimized and manufactured hexacopter drone with a vision based AI and online 3D mapping using the C++ programming language on ROS platform.
 
 ## Installation
 -------------------
