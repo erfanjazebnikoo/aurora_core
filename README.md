@@ -18,6 +18,12 @@ Aurora Core is tested successfully on MAVLink. You can use this [LINK](http://wi
 
 Pixhawk is used as flight control in Aurora project.
 
+### Youtube
+----------------
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
+
+
 ## Support
 -----------------
 
