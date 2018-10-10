@@ -12,10 +12,9 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 | ------ | ------ |
 | OS| [Ubuntu 14.04](http://cdimage.ubuntu.com/netboot/14.04/?_ga=2.72803859.1606487436.1539181592-1947134802.1539181592)|
 | ROS | [ROS indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) |
-| ROS Ground Control Station Communication|[MAVROS](http://wiki.ros.org/mavros), [Installation](https://dev.px4.io/ros-mavros-installation.html)|
-| ROS Auto Pilot Communication|[Mavlink](http://wiki.ros.org/mavlink), [Installation](http://qgroundcontrol.org/mavlink/)|
-
-Pixhawk is used as flight control in Aurora project.
+| Flight Control| [Pixhawk 4][pixhawk]|
+| Ground Control Station Communication|[MAVROS](https://dev.px4.io/ros-mavros-installation.html), [wiki](http://wiki.ros.org/mavros)|
+| Auto Pilot Communication| [Mavlink](http://qgroundcontrol.org/mavlink/), [wiki](http://wiki.ros.org/mavlink)|
 
 ----------
 
@@ -28,3 +27,5 @@ Please ask your questions on:
 
 - erfan.jazebnikoo@gmail.com
 - sajjadmuscle@gmail.com
+
+[pixhawk]:<https://docs.px4.io/en/flight_controller/pixhawk4.html>
