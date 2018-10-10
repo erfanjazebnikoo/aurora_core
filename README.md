@@ -4,8 +4,6 @@ Core program of autonomous multi rotor robots based on APM autopilot.We use ROS 
 A multirotor or multicopter is a rotorcraft with more than two rotors. An advantage of multirotor aircraft is the simpler rotor mechanics required for flight control. 
 We designed, optimized and manufactured hexacopter drone with a vision based AI and online 3D mapping using the C++ programming language on ROS platform.
 
-**Youtube:** [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
-
 -------------------
 
 ### Installation Requirements
@@ -21,7 +19,7 @@ Pixhawk is used as flight control in Aurora project.
 
 ----------
 
-
+**Youtube:** [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
 
 ## Support
 -----------------
