@@ -18,7 +18,9 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 
 ----------
 
-**Youtube:** [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
+### Youtube: 
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
 
 ## Support
 -----------------
