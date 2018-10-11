@@ -48,7 +48,7 @@ In the executing unit, the commands are analyzed to set the main skills. The ski
 
 ### 3- Communications
 UDP protocol is applied by our team in order to form a link between Core and [GUI][aurora_gui]. Guilano team applies the example of using UDP protocol, the coordinates obtained by [GUI][aurora_gui] convert to an XML file and send on UDP port while Core is waiting for a data in this port.
-[MAVLink][mavlink-wiki] is a communication protocol between Flight Control (FC) and Ground Control Station (GCS) which provides the capability to control robot for the user by sending message packets to FC. [MAVLink][mavlink-wiki] is a very compact library in order to manage messages for micro air vehicles. It can pack C-struck by high functionality serial channels and send them to GCS. This protocol can be used as a communication link in APM, Pixhawk and PX4 platforms. [MAVLink][mavlink-wiki] has been being used in this project as a communication protocol between drone and GCS since we have used Pixhawk in this project.
+[MAVLink][mavlink-wiki] is a communication protocol between Flight Control (FC) and Ground Control Station (GCS) which provides the capability to control robot for the user by sending message packets to FC. [MAVLink][mavlink-wiki] is a very compact library in order to manage messages for micro air vehicles. It can pack C-struck by high functionality serial channels and send them to GCS. This protocol can be used as a communication link in [APM][apm], [Pixhawk][pixhawk] and PX4 platforms. [MAVLink][mavlink-wiki] has been being used in this project as a communication protocol between drone and GCS since we have used [Pixhawk][pixhawk] in this project.
 [Mavros][mavros-wiki] is a communication library between FC and [ROS][ros] system that can receive FC data to be used in Core. In addition, [Mavros][mavros-wiki] is able to connect to the robot and control it with the help of telemetry (for instance, changing flight modes, controlling servo motors, controlling robot movements).
 
 ### 4- Mapping
@@ -94,11 +94,11 @@ In this year, Guilano team is willing to create sophisticated robots. Hence, it 
 
 ## Robot Control Architecture
 
-The control system overview is presented in Figure. The [Pixhawk flight controller][pixhawk] is used for low-level control like controlling the angular rotations, setting motor outputs and also providing raw data used by the higher level estimation and control. The IMU  and sonar data is fused by using a nonlinear filter (unscented Kalman filter) and the estimates are supplied to the controllers that control the vertical and horizontal position of the hexacopter by sending altitude and throttle set points back to the pixhawk autopilot.
+The control system overview is presented in Figure. The [Pixhawk flight controller][pixhawk] is used for low-level control like controlling the angular rotations, setting motor outputs and also providing raw data used by the higher level estimation and control. The IMU  and sonar data is fused by using a nonlinear filter (unscented Kalman filter) and the estimates are supplied to the controllers that control the vertical and horizontal position of the hexacopter by sending altitude and throttle set points back to the [pixhawk autopilot][pixhawk].
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_system_overview.png)
 
-[PID][pid] control is explained in and is one of the most fundamental types of control and also the most frequently implemented in industry. The great strengths of the [PID controller][pid] are its simple structure and low requirements on the system model. Pixhawk used the [PID controller][pid] to take control of the stability of the robot. Furthermore, a specific ratio is evaluated by the stated equipment for every direction of movement of the aerial robot. The method of this controller functionality is described below
+[PID][pid] control is explained in and is one of the most fundamental types of control and also the most frequently implemented in industry. The great strengths of the [PID controller][pid] are its simple structure and low requirements on the system model. [Pixhawk][pixhawk] used the [PID controller][pid] to take control of the stability of the robot. Furthermore, a specific ratio is evaluated by the stated equipment for every direction of movement of the aerial robot. The method of this controller functionality is described below
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/Quala-PID-Pathfinder-PID.png)
 
@@ -108,7 +108,7 @@ Guilano robot is controlled in the manual and autonomous mode that is described 
 
 ## Hardware and mechanical features
 
-A multirotor design and configuration are dependent on many parameters such as take-off, weight, endurance, wind gust resistance, payload, which are selected based on the consumption of the robot. The consumption may vary for various purposes such as aerial photography, FPV , security, and so forth.The aforementioned multirotor is optimized for 30minutes of flight with the 1kg payload attached in a 30km/h wind speed. In addition, Tiger antigravity brushless motors and 9 Inch propellers are used in the Guilano multirotor.
+A multirotor design and configuration are dependent on many parameters such as take-off, weight, endurance, wind gust resistance, payload, which are selected based on the consumption of the robot. The consumption may vary for various purposes such as aerial photography, FPV , security, and so forth.The aforementioned multirotor is optimized for 30minutes of flight with the 1kg payload attached in a 30km/h wind speed. In addition, [Tiger antigravity brushless motors and 9 Inch propellers][motors] are used in the Guilano multirotor.
 
 [![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_hexacopter_lq.jpg)](http://erfanjazebnikoo.com/downloads/guilano_hexacopter.jpg)
 
@@ -116,7 +116,7 @@ A multirotor design and configuration are dependent on many parameters such as t
 After years of research, we obtained the fundamental and necessary factors for proper method to implement and use the equipment. This robot has different dimensions which numerous creativity and innovations can be seen in most of them.
 
 #### 1.	Flight Controller
-Pixhawk is an open-source hardware project aiming to provide high-end autopilot hardware. Pixhawk is an advanced autopilot which is developed by DIY Drones. It has a powerful processor by 168 MHz Cortex M4F CPU (256 KB RAM, 2 MB Flash), advanced sensors (3D accelerometer, gyroscope sensor, magnetometer, barometer) and NuttX real-time operating system. 
+[Pixhawk][pixhawk] is an open-source hardware project aiming to provide high-end autopilot hardware. [Pixhawk][pixhawk] is an advanced autopilot which is developed by DIY Drones. It has a powerful processor by 168 MHz Cortex M4F CPU (256 KB RAM, 2 MB Flash), advanced sensors (3D accelerometer, gyroscope sensor, magnetometer, barometer) and NuttX real-time operating system. 
 The emergency controller board in the broached robot is capable of giving a related function to robot needs in according to different situations by various sensors used in the robot and complete intelligent experience in both autonomous and manual modes. This helps an autonomous system to provide control for a robot which decreases the robot unwanted behaviors even in bad weather conditions or when the connection is lost. This board can be connected directly to the computer.
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/pixhawk.jpg)
@@ -134,11 +134,11 @@ This system is based on the opensource of the [openLRSng project][openLRSng] and
 ![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_schematic.jpg)
 
 
-The latest version of this radio can send 8 channel PPM signals and data on 57600 air baud rate.The RFM 23Bp provides the digital RSSI value for the firmware to convert to PWM  output signal. These signals are received by the microcontroller which integrates the signals with each other and converts them to an analog voltage in order to be used by ADC  converter. This is the most important feedback for using the robot in radio range. The Two pieces of firmware for transmitter and receiver are written and loaded to the ground station and the robot board.
+The latest version of this radio can send 8 channel PPM signals and data on 57600 air baud rate.The [RFM23Bp][RFM23Bp] provides the digital RSSI value for the firmware to convert to PWM  output signal. These signals are received by the microcontroller which integrates the signals with each other and converts them to an analog voltage in order to be used by ADC  converter. This is the most important feedback for using the robot in radio range. The Two pieces of firmware for transmitter and receiver are written and loaded to the ground station and the robot board.
 
 #### 4.	HD video Stream
-The [Raspberry Pi 3][rbpi3] and a 5-megapixel camera providing HD video are used in Guilano projects. The raspberry is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
-The video streams sent to the ground station by UDP network are a port through the Gstreamer. The open source software is installed on both the raspberry pi and the ground station Linux machine. We used a 0.6 W 2.4MHz Amplifier with a high gain antenna on both the ground station and the robot, for the medium range (about 1000 meters). Moreover, all the local legislation concerning the RF restrictions was taken into consideration in the project.
+[The Raspberry Pi 3][rbpi3] and a 5-megapixel camera providing HD video are used in Guilano projects. [The raspberry pi][rbpi3] is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
+The video streams sent to the ground station by UDP network are a port through the Gstreamer. The open source software is installed on both [the raspberry pi][rbpi3] and the ground station Linux machine. We used a 0.6 W 2.4MHz Amplifier with a high gain antenna on both the ground station and the robot, for the medium range (about 1000 meters). Moreover, all the local legislation concerning the RF restrictions was taken into consideration in the project.
 
 ![Solid](http://erfanjazebnikoo.com/downloads/raspberry_pi.jpg)
 
@@ -148,6 +148,7 @@ The battery used in this robot is Li-Po, Tattu Gens Ace 10000mAh 25C 4 Cell, whi
 
 ![Solid](http://erfanjazebnikoo.com/downloads/battery.jpg)
 
+---
 
 ### 2-	Mechanics
 The frame of the mentioned hexacopter is star-shaped and made by wooden material for the central plates. Its arms are made of aluminum alloy.
@@ -163,7 +164,7 @@ The appearance of upper and lower chassis is circular. The diameter is 180 mm wi
 
 #### 2.	Driving mechanism
 
-This robot is powered by 6.920KV Air Gear 350 tiger brushless motors with an 800g thrust that uses 9*4.5 inch propellers along with 4 cell Li-Po battery. As a result, the total thrust of the copter is about 4500g that is used to neutralize the weight of the hexacopter and the unwanted drifting. Hexarotor releases more driving force and stability in the sky. The total weight of the robot is approximately 1.5kg to benefit from more strength and speed.
+This robot is powered by [6.920KV Air Gear 350 tiger brushless motors][motors] with an 800g thrust that uses 9*4.5 inch propellers along with 4 cell Li-Po battery. As a result, the total thrust of the copter is about 4500g that is used to neutralize the weight of the hexacopter and the unwanted drifting. Hexarotor releases more driving force and stability in the sky. The total weight of the robot is approximately 1.5kg to benefit from more strength and speed.
 When the robot is expected to turn right or left, it goes to the direction by increasing more torque in opposite motors.
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_motors_blades.jpg)
