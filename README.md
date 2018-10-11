@@ -2,7 +2,7 @@
 
 Core program of autonomous multi rotor robots based on [APM autopilot][apm].We use [ROS platform][ros] and [Mavlink protocol][mavlink-wiki] for connection between program and robot.
 A multirotor or multicopter is a rotorcraft with more than two rotors. An advantage of multirotor aircraft is the simpler rotor mechanics required for flight control. 
-We designed, optimized and manufactured hexacopter drone with a vision based AI and online 3D mapping using the C++ programming language on [ROS platform][ros].
+We designed, optimized and manufactured hexacopter drone with a [vision based][aurora_vision] AI and [online 3D mapping][aurora_copter] using the C++ programming language on [ROS platform][ros].
 
 -------------------
 
@@ -25,10 +25,10 @@ The software section divides into:
 | ------ | ------ |
 | Core | [https://github.com/erfanjazebnikoo/aurora_core][aurora_core]|
 | GUI|[https://github.com/erfanjazebnikoo/aurora_gui][aurora_gui] |
-| Vision|[https://github.com/SajjadRahnama/aurora_vision][aurora_vision] |
+| Vision|[https://github.com/SajjadRahnama/aurora_vision] |
 | Mapping|[https://github.com/SajjadRahnama/aurora_copter][aurora_copter] |
 
-[GUI][aurora_gui] is responsible for receiving inputs from the drone and controlling it, Core responsibility is to receive inputs from [GUI][aurora_gui], analyze data and provide proper outputs for the drone, and The Mapping application is responsible for making 3D maps from coordinates and aerial images.
+[GUI][aurora_gui] is responsible for receiving inputs from the drone and controlling it, [Core][aurora_core] responsibility is to receive inputs from [GUI][aurora_gui], analyze data and provide proper outputs for the drone, and [The Mapping application][aurora_copter] is responsible for making 3D maps from coordinates and aerial images.
 In this project C++ programming language, [OpenCV][opencv] and [QT][qt] libraries are applied. [QT5][qt] libraries and ROS packages along with other libraries respectively used in all applications.
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/aurora-core-gui.jpg)
