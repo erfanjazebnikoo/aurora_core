@@ -1,8 +1,8 @@
 # Aurora - Core
 
-Core program of autonomous multi rotor robots based on APM autopilot.We use ROS platform and Mavlink protocol for connection between program and robot.
+Core program of autonomous multi rotor robots based on [APM autopilot][apm].We use [ROS platform][ros] and [Mavlink protocol][mavlink-wiki] for connection between program and robot.
 A multirotor or multicopter is a rotorcraft with more than two rotors. An advantage of multirotor aircraft is the simpler rotor mechanics required for flight control. 
-We designed, optimized and manufactured hexacopter drone with a vision based AI and online 3D mapping using the C++ programming language on ROS platform.
+We designed, optimized and manufactured hexacopter drone with a vision based AI and online 3D mapping using the C++ programming language on [ROS platform][ros].
 
 -------------------
 
@@ -12,7 +12,7 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 | ------ | ------ |
 | OS| [Ubuntu 14.04](http://cdimage.ubuntu.com/netboot/14.04/?_ga=2.72803859.1606487436.1539181592-1947134802.1539181592)|
 | ROS | [ROS indigo][ros-indigo]|
-| Flight Control| [Pixhawk 4][pixhawk]|
+| Flight Control| [Ardupilot Mega (APM) 2.8][apm]|
 | Ground Control Station Communication|[MAVROS][mavros], [wiki][mavros-wiki]|
 | Auto Pilot Communication| [Mavlink][mavlink], [wiki][mavlink-wiki]|
 
@@ -192,4 +192,5 @@ When the robot is expected to turn right or left, it goes to the direction by in
 [aurora_core]:<https://github.com/erfanjazebnikoo/aurora_core>
 [aurora_copter]:<https://github.com/SajjadRahnama/aurora_copter>
 [aurora_Vision]:<https://github.com/SajjadRahnama/aurora_vision>
+[apm]:<http://www.ardupilot.co.uk/>
 
