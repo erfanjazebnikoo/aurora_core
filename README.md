@@ -11,7 +11,7 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 | Requirement | Tested Successfully On |
 | ------ | ------ |
 | OS| [Ubuntu 14.04](http://cdimage.ubuntu.com/netboot/14.04/?_ga=2.72803859.1606487436.1539181592-1947134802.1539181592)|
-| ROS | [ROS indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)|
+| ROS | [ROS indigo][ros-indigo]|
 | Flight Control| [Pixhawk 4][pixhawk]|
 | Ground Control Station Communication|[MAVROS][mavros], [wiki][mavros-wiki]|
 | Auto Pilot Communication| [Mavlink][mavlink], [wiki][mavlink-wiki]|
@@ -19,8 +19,17 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 ----------
 
 ## Software
-The software section divides into Core, Mapping and GUI  applications. GUI is responsible for receiving inputs from the drone and controlling it, Core responsibility is to receive inputs from GUI, analyze data and provide proper outputs for the drone, and The Mapping application is responsible for making 3D maps from coordinates and aerial images.
-In this project C++ programming language, OpenCV and QT libraries are applied. QT5 libraries and ROS packages along with other libraries respectively used in all applications.
+The software section divides into: 
+
+| Application | Link |
+| ------ | ------ |
+| Core | [https://github.com/erfanjazebnikoo/aurora_core][aurora_core]|
+| GUI|[https://github.com/erfanjazebnikoo/aurora_gui][aurora_gui] |
+| Vision|[https://github.com/SajjadRahnama/aurora_vision][aurora_vision] |
+| Mapping|[https://github.com/SajjadRahnama/aurora_copter][aurora_copter] |
+
+[GUI][aurora_gui] is responsible for receiving inputs from the drone and controlling it, Core responsibility is to receive inputs from [GUI][aurora_gui], analyze data and provide proper outputs for the drone, and The Mapping application is responsible for making 3D maps from coordinates and aerial images.
+In this project C++ programming language, [OpenCV][opencv] and [QT][qt] libraries are applied. [QT5][qt] libraries and ROS packages along with other libraries respectively used in all applications.
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/aurora-core-gui.jpg)
 
@@ -33,12 +42,12 @@ In the executing unit, the commands are analyzed to set the main skills. The ski
 [![N|Solid](http://erfanjazebnikoo.com/downloads/aurora-core-flowchart-lq.jpg)](http://erfanjazebnikoo.com/downloads/aurora-core-flowchart.jpg)
 
 ### 2- ROS
-[Robots Operating System (ROS)][ros] is a set of software frameworks for software development of robots. A set of tools, libraries, and conventions in order to simplify complex behavior of the robot as a powerful robotic platform. ROS Indigo version is used in this project. ROS package is generally included in mapping, navigation, object and face recognition, and also movement detection. ROS is deployed by Guilano team, for controlling and intelligent behavior of the robot.
+[Robots Operating System (ROS)][ros] is a set of software frameworks for software development of robots. A set of tools, libraries, and conventions in order to simplify complex behavior of the robot as a powerful robotic platform. [ROS Indigo version][ros-indigo] is used in this project. [ROS][ros] package is generally included in mapping, navigation, object and face recognition, and also movement detection. [ROS][ros] is deployed by Guilano team, for controlling and intelligent behavior of the robot.
 
 ### 3- Communications
-UDP protocol is applied by our team in order to form a link between Core and GUI. Guilano team applies the example of using UDP protocol, the coordinates obtained by GUI convert to an XML file and send on UDP port while Core is waiting for a data in this port.
-[MAVLink][mavlink-wiki] is a communication protocol between Flight Control (FC) and Ground Control Station (GCS) which provides the capability to control robot for the user by sending message packets to FC. MAVLink is a very compact library in order to manage messages for micro air vehicles. It can pack C-struck by high functionality serial channels and send them to GCS. This protocol can be used as a communication link in APM, Pixhawk and PX4 platforms. MAVLink has been being used in this project as a communication protocol between drone and GCS since we have used Pixhawk in this project.
-[Mavros][mavros-wiki] is a communication library between FC and ROS system that can receive FC data to be used in Core. In addition, Mavros is able to connect to the robot and control it with the help of telemetry (for instance, changing flight modes, controlling servo motors, controlling robot movements).
+UDP protocol is applied by our team in order to form a link between Core and [GUI][aurora_gui]. Guilano team applies the example of using UDP protocol, the coordinates obtained by [GUI][aurora_gui] convert to an XML file and send on UDP port while Core is waiting for a data in this port.
+[MAVLink][mavlink-wiki] is a communication protocol between Flight Control (FC) and Ground Control Station (GCS) which provides the capability to control robot for the user by sending message packets to FC. [MAVLink][mavlink-wiki] is a very compact library in order to manage messages for micro air vehicles. It can pack C-struck by high functionality serial channels and send them to GCS. This protocol can be used as a communication link in APM, Pixhawk and PX4 platforms. [MAVLink][mavlink-wiki] has been being used in this project as a communication protocol between drone and GCS since we have used Pixhawk in this project.
+[Mavros][mavros-wiki] is a communication library between FC and [ROS][ros] system that can receive FC data to be used in Core. In addition, [Mavros][mavros-wiki] is able to connect to the robot and control it with the help of telemetry (for instance, changing flight modes, controlling servo motors, controlling robot movements).
 
 ### 4- Mapping
 One of the missions of the competition is mapping along with trajectory. To conduct this mission, open source codes are used and changed to satisfy the competition necessities. To run this system, only one camera is needed to be installed under the robot (the camera faces down). The rviz package which is to show ROS  output systems was applied to demonstrate output data. Rviz includes robot movement directions, the map obtained from camera and objects from image processing.
@@ -46,14 +55,14 @@ One of the missions of the competition is mapping along with trajectory. To cond
 ![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_3d_mapping.jpg)
 
 ### 5- Simulator
-A simulator is a tool for testing software and simulation of competition environment. Gazebo is a simulation framework which works alongside ROS here and illustrates the outputs.
+A simulator is a tool for testing software and simulation of competition environment. Gazebo is a simulation framework which works alongside [ROS][ros] here and illustrates the outputs.
 A simulator can work with the sensors such as laser scanner, sonar, parachute and so forth, which are not available just how a real robot does.To find the strengths and weaknesses of the program, it can be tested in a simulated environment for several times.
 
 ----------
 
 ## Image Processing
-Detecting objects is accurately one of the missions of the competition. [OpenCV](https://opencv.org/) libraries are made use of in order to detect objects. In the previous projects, we managed to detect shapes like circle, square, triangle, pentagon, star and so forth. More complex shapes and colors are needed to train for OpenCV. In the last competition, the team trained the required shapes, for instance, heart and landing sign, to land by providing images from different angles and training them by OpenCV libraries. This time-consuming process results in an XML file which is used to detect the target shape.
-In addition, we used canny, filtering and rough circle algorithms from OpenCV libraries to detect simple colored shapes. Another point to mention is that the image processing program works with ROS. In this method, the image is provided by the topics specified for sending image data. It is beneficial because the main program is separated from the image processing program. The main program is responsible for controlling the robot. If any issues occur in the image processing program, the main application works without any problems.
+Detecting objects is accurately one of the missions of the competition. [OpenCV][opencv] libraries are made use of in order to detect objects. In the previous projects, we managed to detect shapes like circle, square, triangle, pentagon, star and so forth. More complex shapes and colors are needed to train for [OpenCV][opencv]. In the last competition, the team trained the required shapes, for instance, heart and landing sign, to land by providing images from different angles and training them by [OpenCV][opencv] libraries. This time-consuming process results in an XML file which is used to detect the target shape.
+In addition, we used canny, filtering and rough circle algorithms from [OpenCV][opencv] libraries to detect simple colored shapes. Another point to mention is that the image processing program works with [ROS][ros]. In this method, the image is provided by the topics specified for sending image data. It is beneficial because the main program is separated from the image processing program. The main program is responsible for controlling the robot. If any issues occur in the image processing program, the main application works without any problems.
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_image_processing.jpg)
 
@@ -87,7 +96,7 @@ The control system overview is presented in Figure. The [Pixhawk flight controll
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_system_overview.png)
 
-[PID][pid] control is explained in and is one of the most fundamental types of control and also the most frequently implemented in industry. The great strengths of the PID controller are its simple structure and low requirements on the system model. Pixhawk used the PID controller to take control of the stability of the robot. Furthermore, a specific ratio is evaluated by the stated equipment for every direction of movement of the aerial robot. The method of this controller functionality is described below
+[PID][pid] control is explained in and is one of the most fundamental types of control and also the most frequently implemented in industry. The great strengths of the [PID controller][pid] are its simple structure and low requirements on the system model. Pixhawk used the [PID controller][pid] to take control of the stability of the robot. Furthermore, a specific ratio is evaluated by the stated equipment for every direction of movement of the aerial robot. The method of this controller functionality is described below
 
 ![N|Solid](http://erfanjazebnikoo.com/downloads/Quala-PID-Pathfinder-PID.png)
 
@@ -111,12 +120,12 @@ The emergency controller board in the broached robot is capable of giving a rela
 ![N|Solid](http://erfanjazebnikoo.com/downloads/pixhawk.jpg)
 
 #### 2.	Components and modules
-The components used in the above-mentioned robot are external GPS [6], Air Gear 350 brushless motors and speed controllers [7], emergency controller board and power supply circuit. Some components made by the panel are RC radio, emergency controller board, and power supply circuit.
+The components used in the above-mentioned robot are [external GPS][gps], [Air Gear 350 brushless motors and speed controllers][motors], emergency controller board and power supply circuit. Some components made by the panel are RC radio, emergency controller board, and power supply circuit.
 
 #### 3.	Telemetry and RC Radio
-While The DIY Guilano RC radio and telemetry system are based on RFM23Bp [8] and ATmega328 microcontroller hardware which can use large UHF Band, The team have made use of the ISM  frequency of (433.05 -434.79 MHz).It can send telemetry data and standard PPM  [9] [10] signals through eight channels. In other words, we don’t necessarily use the separate telemetry and RC radio. 
+While The DIY Guilano RC radio and telemetry system are based on [RFM23Bp][RFM23Bp] and ATmega328 microcontroller hardware which can use large UHF Band, The team have made use of the ISM  frequency of (433.05 -434.79 MHz).It can send telemetry data and standard PPM signals through eight channels. In other words, we don’t necessarily use the separate telemetry and RC radio. 
 The advantage of using our design is to avoid using two radio links on different frequencies, and also works fine along with numerous interferences with sensitive electronic equipment, namely GPS, magnetometer, servo motors, camera, gimbal, and so forth.
-This system is based on the opensource of the openLRSng project [11] and modified for more bandwidth, Baud Rate, Binding code, 5 channel selectable frequency hopping, RSSI  Providing, Failsafe and reduction of the output RF power for local legislation. The following pictures show the PCB  Design and radio used on the Robot.
+This system is based on the opensource of the [openLRSng project][openLRSng] and modified for more bandwidth, Baud Rate, Binding code, 5 channel selectable frequency hopping, RSSI  Providing, Failsafe and reduction of the output RF power for local legislation. The following pictures show the PCB  Design and radio used on the Robot.
 
 ![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_transmitter.jpg) 
 ![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_receiver.jpg)
@@ -126,7 +135,7 @@ This system is based on the opensource of the openLRSng project [11] and modifie
 The latest version of this radio can send 8 channel PPM signals and data on 57600 air baud rate.The RFM 23Bp provides the digital RSSI value for the firmware to convert to PWM  output signal. These signals are received by the microcontroller which integrates the signals with each other and converts them to an analog voltage in order to be used by ADC  converter. This is the most important feedback for using the robot in radio range. The Two pieces of firmware for transmitter and receiver are written and loaded to the ground station and the robot board.
 
 #### 4.	HD video Stream
-The Raspberry Pi 3 [12] and a 5-megapixel camera providing HD video are used in Guilano projects. The raspberry is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
+The [Raspberry Pi 3][rbpi3] and a 5-megapixel camera providing HD video are used in Guilano projects. The raspberry is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
 The video streams sent to the ground station by UDP network are a port through the Gstreamer. The open source software is installed on both the raspberry pi and the ground station Linux machine. We used a 0.6 W 2.4MHz Amplifier with a high gain antenna on both the ground station and the robot, for the medium range (about 1000 meters). Moreover, all the local legislation concerning the RF restrictions was taken into consideration in the project.
 
 ![Solid](http://erfanjazebnikoo.com/downloads/raspberry_pi.jpg)
@@ -170,4 +179,17 @@ When the robot is expected to turn right or left, it goes to the direction by in
 [mavlink]:<http://qgroundcontrol.org/mavlink/>
 [mavlink-wiki]:<http://wiki.ros.org/mavlink>
 [ros]:<http://www.ros.org/core-components/>
+[ros-indigo]:<http://wiki.ros.org/indigo/Installation/Ubuntu>
 [pid]:<https://en.wikipedia.org/wiki/PID_controller>
+[gps]:<https://www.u-blox.com/en/product/neo-m8-series>
+[motors]:<http://store-en.tmotor.com/>
+[RFM23Bp]:<http://www.hoperf.com/upload/rf/RFM23BP.pdf>
+[openLRSng]:<https://openlrsng.org/>
+[rbpi3]:<https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
+[opencv]:<https://opencv.org/>
+[qt]:<https://www.qt.io/>
+[aurora_gui]:<https://github.com/erfanjazebnikoo/aurora_gui>
+[aurora_core]:<https://github.com/erfanjazebnikoo/aurora_core>
+[aurora_copter]:<https://github.com/SajjadRahnama/aurora_copter>
+[aurora_Vision]:<https://github.com/SajjadRahnama/aurora_vision>
+
