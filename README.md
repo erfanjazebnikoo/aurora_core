@@ -59,6 +59,20 @@ In addition, we used canny, filtering and rough circle algorithms from OpenCV li
 
 ----------
 
+## Robot Control Architecture
+
+The control system overview is presented in Figure. The [Pixhawk flight controller][pixhawk] is used for low-level control like controlling the angular rotations, setting motor outputs and also providing raw data used by the higher level estimation and control. The IMU  and sonar data is fused by using a nonlinear filter (unscented Kalman filter) and the estimates are supplied to the controllers that control the vertical and horizontal position of the hexacopter by sending altitude and throttle set points back to the pixhawk autopilot.
+
+![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_system_overview.png)
+
+[PID][pid] control is explained in and is one of the most fundamental types of control and also the most frequently implemented in industry. The great strengths of the PID controller are its simple structure and low requirements on the system model. Pixhawk used the PID controller to take control of the stability of the robot. Furthermore, a specific ratio is evaluated by the stated equipment for every direction of movement of the aerial robot. The method of this controller functionality is described below
+
+![N|Solid](http://erfanjazebnikoo.com/downloads/Quala-PID-Pathfinder-PID.png)
+
+Guilano robot is controlled in the manual and autonomous mode that is described in this document.
+
+----------
+
 ### Youtube: 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
@@ -78,3 +92,4 @@ Please ask your questions on:
 [mavlink]:<http://qgroundcontrol.org/mavlink/>
 [mavlink-wiki]:<http://wiki.ros.org/mavlink>
 [ros]:<http://www.ros.org/core-components/>
+[pid]:<https://en.wikipedia.org/wiki/PID_controller>
