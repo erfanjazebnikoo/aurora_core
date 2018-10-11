@@ -64,6 +64,17 @@ In addition, we used canny, filtering and rough circle algorithms from OpenCV li
 Guilano team has committed to working on research and development of multicopter robots since 2010 at Professor Hesabi robotic research laboratory of Islamic Azad University of Lahijan Branch. Some of the team achievements are creating quadrotors, hexacopters, bi-fuel drones in different sizes, applications, as well as winning various awards in competitions and exhibitions. Guilano team took part in the indoor league of Iran Open and ranked 4 in the year 2013. It ranked 5 in the outdoor league of Iran open 2017 as well. Guilano team was, indeed, the best technical team of the 2017 Iran open competition.The team goals have changed to making intelligent robots by image processing, improving AI  and fundamental research in electronics since 2013. Thus, we have focused on research and development of hardware and software to improve the functionality of robots. The DIY RC radio controller and telemetry, creating an emergency controller, antenna tracker, developing mapping algorithms and the intelligent making of robot behaviors are some instance of the recent projects
 In this year, Guilano team is willing to create sophisticated robots. Hence, it needs to be experiencing major changes in hardware and software design in order to participate in the outdoor league. Different flight modes have been simulated, tested and implemented according to the competition rules.Therefore, optimized details for body design was obtained to build a hexacopter robot. Electronic circuits designed were due to sensors and essential capabilities. Robot movement controllers were added to subordinate software layers.The noted Software is divided into two major sections. These sections are object detection based on image processing and Artificial Intelligence (AI) so as to develop proper behavior in different situations. In this paper, we explain algorithms and design details completely and clearly.
 
+**Team Leader:**
+ - [Erfan Jazeb Nikoo](mailto:erfan.jazebnikoo@gmail.com)
+
+**Hardware Team Member:**
+ - [Amir Abkhoshk](mailto:amirabkhoshk@gmail.com)
+ - [Babak Moradi](mailto:Babak.elecrobo@gmail.com)
+
+**Software Team Member:**
+ - [Sajjad Rahnama](mailto:sajjadmuscle@gmail.com)
+ - [Navid Hadipour Limouei](mailto:navid.hadipour.le@gmail.com)
+
 ----------
 
 ## Robot Control Architecture
@@ -114,10 +125,13 @@ The latest version of this radio can send 8 channel PPM signals and data on 5760
 The Raspberry Pi 3 [12] and a 5-megapixel camera providing HD video are used in Guilano projects. The raspberry is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
 The video streams sent to the ground station by UDP network are a port through the Gstreamer. The open source software is installed on both the raspberry pi and the ground station Linux machine. We used a 0.6 W 2.4MHz Amplifier with a high gain antenna on both the ground station and the robot, for the medium range (about 1000 meters). Moreover, all the local legislation concerning the RF restrictions was taken into consideration in the project.
 
+![Solid](http://erfanjazebnikoo.com/downloads/raspberry_pi.jpg)
+
 #### 5.	Battery
 The Battery depends on the main purpose and ideas to design the copter. For a particular instance, the best option for mini and micro size batteries is two or three cells of Li-Po  battery that would help to diminish the size and weight, but increase the current consumption as a result of low voltage.
 The battery used in this robot is Li-Po, Tattu Gens Ace 10000mAh 25C 4 Cell, which is specifically designed for multi-rotor robots. These batteries provide high current to fly at high speed in any direction and high endurance for about 30 minutes. The mentioned batteries are made by vibrant resistant and fire retardant materials, then they can be used in various conditions. Low weight and vast capacity are two brilliant features of these batteries.
 
+![Solid](http://erfanjazebnikoo.com/downloads/battery.jpg)
 
 ----------
 
