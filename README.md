@@ -25,10 +25,10 @@ The Aurora software section divides into:
 
 | Application | Link |
 | ------ | ------ |
-| Core | [https://github.com/erfanjazebnikoo/aurora_core][aurora_core]|
-| GUI|[https://github.com/erfanjazebnikoo/aurora_gui][aurora_gui] |
-| Vision|[https://github.com/SajjadRahnama/aurora_vision] |
-| Mapping|[https://github.com/SajjadRahnama/aurora_copter][aurora_copter] |
+| Core | [https://github.com/erfanjazebnikoo/aurora_core][aurora_core] |
+| GUI| [https://github.com/erfanjazebnikoo/aurora_gui][aurora_gui] |
+| Vision| [https://github.com/SajjadRahnama/aurora_vision][aurora_vision] |
+| Mapping| [https://github.com/SajjadRahnama/aurora_copter][aurora_copter] |
 
 [GUI][aurora_gui] is responsible for receiving inputs from the drone and controlling it, [Core][aurora_core] responsibility is to receive inputs from [GUI][aurora_gui], analyze data and provide proper outputs for the drone, and [The Mapping application][aurora_copter] is responsible for making 3D maps from coordinates and aerial images.
 In this project C++ programming language, [OpenCV][opencv] and [QT][qt] libraries are applied. [QT5][qt] libraries and ROS packages along with other libraries respectively used in all applications.
