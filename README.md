@@ -103,9 +103,9 @@ While The DIY Guilano RC radio and telemetry system are based on RFM23Bp [8] and
 The advantage of using our design is to avoid using two radio links on different frequencies, and also works fine along with numerous interferences with sensitive electronic equipment, namely GPS, magnetometer, servo motors, camera, gimbal, and so forth.
 This system is based on the opensource of the openLRSng project [11] and modified for more bandwidth, Baud Rate, Binding code, 5 channel selectable frequency hopping, RSSI  Providing, Failsafe and reduction of the output RF power for local legislation. The following pictures show the PCB  Design and radio used on the Robot.
 
-![Solid](http://erfanjazebnikoo.com/downloads/ppm_transmitter.jpg) 
-![Solid](http://erfanjazebnikoo.com/downloads/ppm_receiver.jpg)
-![Solid](http://erfanjazebnikoo.com/downloads/ppm_schematic.jpg)
+![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_transmitter.jpg) 
+![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_receiver.jpg)
+![Solid](http://erfanjazebnikoo.com/downloads/guilano_ppm_schematic.jpg)
 
 
 The latest version of this radio can send 8 channel PPM signals and data on 57600 air baud rate.The RFM 23Bp provides the digital RSSI value for the firmware to convert to PWM  output signal. These signals are received by the microcontroller which integrates the signals with each other and converts them to an analog voltage in order to be used by ADC  converter. This is the most important feedback for using the robot in radio range. The Two pieces of firmware for transmitter and receiver are written and loaded to the ground station and the robot board.
