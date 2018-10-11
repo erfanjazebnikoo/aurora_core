@@ -1,4 +1,4 @@
-# Aurora core
+# Aurora - Core
 
 Core program of autonomous multi rotor robots based on APM autopilot.We use ROS platform and Mavlink protocol for connection between program and robot.
 A multirotor or multicopter is a rotorcraft with more than two rotors. An advantage of multirotor aircraft is the simpler rotor mechanics required for flight control. 
@@ -8,10 +8,10 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 
 ### Installation Requirements
 
-| Requirement | Tested Successfully On | 
+| Requirement | Tested Successfully On |
 | ------ | ------ |
 | OS| [Ubuntu 14.04](http://cdimage.ubuntu.com/netboot/14.04/?_ga=2.72803859.1606487436.1539181592-1947134802.1539181592)|
-| ROS | [ROS indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) |
+| ROS | [ROS indigo](http://wiki.ros.org/indigo/Installation/Ubuntu)|
 | Flight Control| [Pixhawk 4][pixhawk]|
 | Ground Control Station Communication|[MAVROS][mavros], [wiki][mavros-wiki]|
 | Auto Pilot Communication| [Mavlink][mavlink], [wiki][mavlink-wiki]|
@@ -22,7 +22,7 @@ We designed, optimized and manufactured hexacopter drone with a vision based AI 
 The software section divides into Core, Mapping and GUI  applications. GUI is responsible for receiving inputs from the drone and controlling it, Core responsibility is to receive inputs from GUI, analyze data and provide proper outputs for the drone, and The Mapping application is responsible for making 3D maps from coordinates and aerial images.
 In this project C++ programming language, OpenCV and QT libraries are applied. QT5 libraries and ROS packages along with other libraries respectively used in all applications.
 
-![N|Solid](http://erfanjazebnikoo.com/downloads/aurora-core.jpg)
+![N|Solid](http://erfanjazebnikoo.com/downloads/aurora-core-gui.jpg)
 
 ### 1- Artificial intelligence architecture
 In the high-level control system, A suitable structure was designed by Guilano panel for multi-agent decision making. The structure uses concepts, world model, skills, behavior, and communications to make more intelligent decisions. Some intelligent behavioral algorithm including state-based decision were implemented by the panel to make the right decision during a mission, shape position estimation and flying above a shape by using image processing data.
@@ -59,6 +59,13 @@ In addition, we used canny, filtering and rough circle algorithms from OpenCV li
 
 ----------
 
+# Guilano 
+
+Guilano team has committed to working on research and development of multicopter robots since 2010 at Professor Hesabi robotic research laboratory of Islamic Azad University of Lahijan Branch. Some of the team achievements are creating quadrotors, hexacopters, bi-fuel drones in different sizes, applications, as well as winning various awards in competitions and exhibitions. Guilano team took part in the indoor league of Iran Open and ranked 4 in the year 2013. It ranked 5 in the outdoor league of Iran open 2017 as well. Guilano team was, indeed, the best technical team of the 2017 Iran open competition.The team goals have changed to making intelligent robots by image processing, improving AI  and fundamental research in electronics since 2013. Thus, we have focused on research and development of hardware and software to improve the functionality of robots. The DIY RC radio controller and telemetry, creating an emergency controller, antenna tracker, developing mapping algorithms and the intelligent making of robot behaviors are some instance of the recent projects
+In this year, Guilano team is willing to create sophisticated robots. Hence, it needs to be experiencing major changes in hardware and software design in order to participate in the outdoor league. Different flight modes have been simulated, tested and implemented according to the competition rules.Therefore, optimized details for body design was obtained to build a hexacopter robot. Electronic circuits designed were due to sensors and essential capabilities. Robot movement controllers were added to subordinate software layers.The noted Software is divided into two major sections. These sections are object detection based on image processing and Artificial Intelligence (AI) so as to develop proper behavior in different situations. In this paper, we explain algorithms and design details completely and clearly.
+
+----------
+
 ## Robot Control Architecture
 
 The control system overview is presented in Figure. The [Pixhawk flight controller][pixhawk] is used for low-level control like controlling the angular rotations, setting motor outputs and also providing raw data used by the higher level estimation and control. The IMU  and sonar data is fused by using a nonlinear filter (unscented Kalman filter) and the estimates are supplied to the controllers that control the vertical and horizontal position of the hexacopter by sending altitude and throttle set points back to the pixhawk autopilot.
@@ -70,6 +77,47 @@ The control system overview is presented in Figure. The [Pixhawk flight controll
 ![N|Solid](http://erfanjazebnikoo.com/downloads/Quala-PID-Pathfinder-PID.png)
 
 Guilano robot is controlled in the manual and autonomous mode that is described in this document.
+
+----------
+
+## Hardware and mechanical features
+
+A multirotor design and configuration are dependent on many parameters such as take-off, weight, endurance, wind gust resistance, payload, which are selected based on the consumption of the robot. The consumption may vary for various purposes such as aerial photography, FPV , security, and so forth.The aforementioned multirotor is optimized for 30minutes of flight with the 1kg payload attached in a 30km/h wind speed. In addition, Tiger antigravity brushless motors and 9 Inch propellers are used in the Guilano multirotor.
+
+[![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_hexacopter_lq.jpg)](http://erfanjazebnikoo.com/downloads/guilano_hexacopter.jpg)
+
+### 1- Electronics
+After years of research, we obtained the fundamental and necessary factors for proper method to implement and use the equipment. This robot has different dimensions which numerous creativity and innovations can be seen in most of them.
+
+#### 1.	Flight Controller
+Pixhawk is an open-source hardware project aiming to provide high-end autopilot hardware. Pixhawk is an advanced autopilot which is developed by DIY Drones. It has a powerful processor by 168 MHz Cortex M4F CPU (256 KB RAM, 2 MB Flash), advanced sensors (3D accelerometer, gyroscope sensor, magnetometer, barometer) and NuttX real-time operating system. 
+The emergency controller board in the broached robot is capable of giving a related function to robot needs in according to different situations by various sensors used in the robot and complete intelligent experience in both autonomous and manual modes. This helps an autonomous system to provide control for a robot which decreases the robot unwanted behaviors even in bad weather conditions or when the connection is lost. This board can be connected directly to the computer.
+
+![N|Solid](http://erfanjazebnikoo.com/downloads/pixhawk.jpg)
+
+#### 2.	Components and modules
+The components used in the above-mentioned robot are external GPS [6], Air Gear 350 brushless motors and speed controllers [7], emergency controller board and power supply circuit. Some components made by the panel are RC radio, emergency controller board, and power supply circuit.
+
+#### 3.	Telemetry and RC Radio
+While The DIY Guilano RC radio and telemetry system are based on RFM23Bp [8] and ATmega328 microcontroller hardware which can use large UHF Band, The team have made use of the ISM  frequency of (433.05 -434.79 MHz).It can send telemetry data and standard PPM  [9] [10] signals through eight channels. In other words, we don’t necessarily use the separate telemetry and RC radio. 
+The advantage of using our design is to avoid using two radio links on different frequencies, and also works fine along with numerous interferences with sensitive electronic equipment, namely GPS, magnetometer, servo motors, camera, gimbal, and so forth.
+This system is based on the opensource of the openLRSng project [11] and modified for more bandwidth, Baud Rate, Binding code, 5 channel selectable frequency hopping, RSSI  Providing, Failsafe and reduction of the output RF power for local legislation. The following pictures show the PCB  Design and radio used on the Robot.
+
+![Solid](http://erfanjazebnikoo.com/downloads/ppm_transmitter.jpg) 
+![Solid](http://erfanjazebnikoo.com/downloads/ppm_receiver.jpg)
+![Solid](http://erfanjazebnikoo.com/downloads/ppm_schematic.jpg)
+
+
+The latest version of this radio can send 8 channel PPM signals and data on 57600 air baud rate.The RFM 23Bp provides the digital RSSI value for the firmware to convert to PWM  output signal. These signals are received by the microcontroller which integrates the signals with each other and converts them to an analog voltage in order to be used by ADC  converter. This is the most important feedback for using the robot in radio range. The Two pieces of firmware for transmitter and receiver are written and loaded to the ground station and the robot board.
+
+#### 4.	HD video Stream
+The Raspberry Pi 3 [12] and a 5-megapixel camera providing HD video are used in Guilano projects. The raspberry is beneficial because of the H264 encoder hardware which results in a very low latency about 70 ms which is very appropriate for the real-time image processing and navigation AI software.
+The video streams sent to the ground station by UDP network are a port through the Gstreamer. The open source software is installed on both the raspberry pi and the ground station Linux machine. We used a 0.6 W 2.4MHz Amplifier with a high gain antenna on both the ground station and the robot, for the medium range (about 1000 meters). Moreover, all the local legislation concerning the RF restrictions was taken into consideration in the project.
+
+#### 5.	Battery
+The Battery depends on the main purpose and ideas to design the copter. For a particular instance, the best option for mini and micro size batteries is two or three cells of Li-Po  battery that would help to diminish the size and weight, but increase the current consumption as a result of low voltage.
+The battery used in this robot is Li-Po, Tattu Gens Ace 10000mAh 25C 4 Cell, which is specifically designed for multi-rotor robots. These batteries provide high current to fly at high speed in any direction and high endurance for about 30 minutes. The mentioned batteries are made by vibrant resistant and fire retardant materials, then they can be used in various conditions. Low weight and vast capacity are two brilliant features of these batteries.
+
 
 ----------
 
