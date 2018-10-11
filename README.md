@@ -74,6 +74,10 @@ In this year, Guilano team is willing to create sophisticated robots. Hence, it 
 **Software Team Member:**
  - [Sajjad Rahnama](mailto:sajjadmuscle@gmail.com)
  - [Navid Hadipour Limouei](mailto:navid.hadipour.le@gmail.com)
+ 
+ ### Youtube: 
+ 
+ [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
 
 ----------
 
@@ -133,20 +137,32 @@ The battery used in this robot is Li-Po, Tattu Gens Ace 10000mAh 25C 4 Cell, whi
 
 ![Solid](http://erfanjazebnikoo.com/downloads/battery.jpg)
 
-----------
 
-### Youtube: 
+### 2-	Mechanics
+The frame of the mentioned hexacopter is star-shaped and made by wooden material for the central plates. Its arms are made of aluminum alloy.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wumIN9yP0dw/0.jpg)](https://www.youtube.com/watch?v=wumIN9yP0dw)
+#### 1.	Chassis and body
+
+This robot is a hexacopter which is made of six arms and propellers. The largest size of the robot is 77 cm. The arms are made of aluminum alloy which is common in aerial industries because this alloy has low weight and density as well as satisfactory solidity.
+The appearance of upper and lower chassis is circular. The diameter is 180 mm with the thickness of 5mm. The chassis is made of wood. The upper chassis used to place main board, speed controllers, besides attaching arms. The lower chassis is used to place batteries, landing gear and arms. Furthermore, this robot uses an H-shaped landing gear that is used for more stability and safety in landing.
+
+[![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_solidwork_1_lq.jpg)](http://erfanjazebnikoo.com/downloads/guilano_solidwork_1.jpg)
+[![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_solidwork_2_lq.jpg)](http://erfanjazebnikoo.com/downloads/guilano_solidwork_2.jpg)
+
+
+#### 2.	Driving mechanism
+
+This robot is powered by 6.920KV Air Gear 350 tiger brushless motors with an 800g thrust that uses 9*4.5 inch propellers along with 4 cell Li-Po battery. As a result, the total thrust of the copter is about 4500g that is used to neutralize the weight of the hexacopter and the unwanted drifting. Hexarotor releases more driving force and stability in the sky. The total weight of the robot is approximately 1.5kg to benefit from more strength and speed.
+When the robot is expected to turn right or left, it goes to the direction by increasing more torque in opposite motors.
+
+![N|Solid](http://erfanjazebnikoo.com/downloads/guilano_motors_blades.jpg)
 
 -----------------
 
 ## Support
 
-Please ask your questions on:
-
-- erfan.jazebnikoo@gmail.com
-- sajjadmuscle@gmail.com
+- [Erfan Jazeb Nikoo](mailto:erfan.jazebnikoo@gmail.com)
+- [Sajjad Rahnama](mailto:sajjadmuscle@gmail.com)
 
 [pixhawk]:<https://docs.px4.io/en/flight_controller/pixhawk4.html>
 [mavros]:<https://dev.px4.io/ros-mavros-installation.html>
